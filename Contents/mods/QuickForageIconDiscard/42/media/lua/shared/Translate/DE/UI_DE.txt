@@ -1,0 +1,13 @@
+UI_QFID_DE = {
+    -- Option Labels
+    UI_options_QFID_discardButton = "Wegwerf-Taste",
+    UI_options_QFID_contextMenuButton = "Kontextmenü-Taste",
+    UI_options_QFID_showTooltip = "Gegenstands-Tooltip anzeigen",
+    
+    -- Button Names
+    UI_options_QFID_button_RMB = "Rechte Maustaste",
+    UI_options_QFID_button_RMB_default = "Rechte Maustaste",
+    UI_options_QFID_button_MMB = "Mittlere Maustaste",
+    UI_options_QFID_button_MB4 = "Maustaste 4",
+    UI_options_QFID_button_MB5 = "Maustaste 5",
+}

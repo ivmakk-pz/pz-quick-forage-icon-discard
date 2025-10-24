@@ -1,0 +1,13 @@
+UI_QFID_PL = {
+    -- Option Labels
+    UI_options_QFID_discardButton = "Przycisk odrzucania",
+    UI_options_QFID_contextMenuButton = "Przycisk menu kontekstowego",
+    UI_options_QFID_showTooltip = "Pokaż podpowiedź przedmiotu",
+    
+    -- Button Names
+    UI_options_QFID_button_RMB = "Prawy przycisk myszy",
+    UI_options_QFID_button_RMB_default = "Prawy przycisk myszy",
+    UI_options_QFID_button_MMB = "Środkowy przycisk myszy",
+    UI_options_QFID_button_MB4 = "Przycisk myszy 4",
+    UI_options_QFID_button_MB5 = "Przycisk myszy 5",
+}

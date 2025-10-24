@@ -1,0 +1,13 @@
+UI_QFID_TH = {
+    -- Option Labels
+    UI_options_QFID_discardButton = "ปุ่มทิ้ง",
+    UI_options_QFID_contextMenuButton = "ปุ่มเมนูบริบท",
+    UI_options_QFID_showTooltip = "แสดงคำแนะนำรายการ",
+    
+    -- Button Names
+    UI_options_QFID_button_RMB = "ปุ่มเมาส์ขวา",
+    UI_options_QFID_button_RMB_default = "ปุ่มเมาส์ขวา",
+    UI_options_QFID_button_MMB = "ปุ่มเมาส์กลาง",
+    UI_options_QFID_button_MB4 = "ปุ่มเมาส์ 4",
+    UI_options_QFID_button_MB5 = "ปุ่มเมาส์ 5",
+}

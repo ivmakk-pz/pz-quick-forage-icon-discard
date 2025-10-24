@@ -1,12 +1,12 @@
 # Workshop Update History
 
-## Upload 1 - {DATE}
-- Initial release
-- Version 1.0.0
+v1.0.0 - 2025-10-24
 
-## Template Notes:
-Track each workshop upload here with:
-- Date of upload
-- Version number
-- Brief description of changes
-- Any important notes for users
+Added:
+- Initial release
+- One-click discard for forage icons via customizable mouse button (RMB default)
+- Alternative context menu access via different mouse button (MMB default)
+- Optional item tooltips on hover
+- Support for RMB, MMB, MB4, MB5 button configurations
+- Multilingual support: CN, DA, DE, EN, ES, FR, HU, IT, JP, KO, PL, PTBR, RU, TH, TR, UA
+- Mod options menu for full customization

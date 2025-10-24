@@ -1,0 +1,13 @@
+UI_QFID_IT = {
+    -- Option Labels
+    UI_options_QFID_discardButton = "Pulsante scarta",
+    UI_options_QFID_contextMenuButton = "Pulsante menu contestuale",
+    UI_options_QFID_showTooltip = "Mostra descrizione oggetto",
+    
+    -- Button Names
+    UI_options_QFID_button_RMB = "Tasto destro del mouse",
+    UI_options_QFID_button_RMB_default = "Tasto destro del mouse",
+    UI_options_QFID_button_MMB = "Tasto centrale del mouse",
+    UI_options_QFID_button_MB4 = "Tasto mouse 4",
+    UI_options_QFID_button_MB5 = "Tasto mouse 5",
+}

@@ -1,0 +1,13 @@
+UI_QFID_ES = {
+    -- Option Labels
+    UI_options_QFID_discardButton = "Botón de Descartar",
+    UI_options_QFID_contextMenuButton = "Botón de Menú Contextual",
+    UI_options_QFID_showTooltip = "Mostrar Descripción del Objeto",
+    
+    -- Button Names
+    UI_options_QFID_button_RMB = "Botón Derecho del Ratón",
+    UI_options_QFID_button_RMB_default = "Botón Derecho del Ratón",
+    UI_options_QFID_button_MMB = "Botón Central del Ratón",
+    UI_options_QFID_button_MB4 = "Botón 4 del Ratón",
+    UI_options_QFID_button_MB5 = "Botón 5 del Ratón",
+}

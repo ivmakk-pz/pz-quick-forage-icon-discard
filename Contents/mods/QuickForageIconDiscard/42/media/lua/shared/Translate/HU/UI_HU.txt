@@ -1,0 +1,13 @@
+UI_QFID_HU = {
+    -- Option Labels
+    UI_options_QFID_discardButton = "Eldobás gomb",
+    UI_options_QFID_contextMenuButton = "Környezeti menü gomb",
+    UI_options_QFID_showTooltip = "Tárgy eszköztipp megjelenítése",
+    
+    -- Button Names
+    UI_options_QFID_button_RMB = "Jobb egérgomb",
+    UI_options_QFID_button_RMB_default = "Jobb egérgomb",
+    UI_options_QFID_button_MMB = "Középső egérgomb",
+    UI_options_QFID_button_MB4 = "Egérgomb 4",
+    UI_options_QFID_button_MB5 = "Egérgomb 5",
+}

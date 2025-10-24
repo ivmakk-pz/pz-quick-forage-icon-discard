@@ -1,3 +1,13 @@
 UI_QFID_EN = {
-    UI_options_QFID_title = "Quick Forage Icon Discard"
+    -- Option Labels
+    UI_options_QFID_discardButton = "Discard Button",
+    UI_options_QFID_contextMenuButton = "Context Menu Button",
+    UI_options_QFID_showTooltip = "Show Item Tooltip",
+    
+    -- Button Names
+    UI_options_QFID_button_RMB = "Right Mouse Button",
+    UI_options_QFID_button_RMB_default = "Right Mouse Button",
+    UI_options_QFID_button_MMB = "Middle Mouse Button",
+    UI_options_QFID_button_MB4 = "Mouse Button 4",
+    UI_options_QFID_button_MB5 = "Mouse Button 5",
 }

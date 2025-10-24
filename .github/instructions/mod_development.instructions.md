@@ -32,6 +32,52 @@ When developing features, always work in the `Contents/mods/QuickForageIconDisca
 - **Keep annotations minimal but accurate** - focus on types rather than redundant descriptions.
 - If accurate types cannot be determined, use `unknown` as the type and notify about it.
 
+## Type Annotations for Vanilla Class Extensions:
+When hooking vanilla classes and adding custom fields, use proper type extensions instead of diagnostic suppressions:
+
+### Correct Approach (Type Extension):
+```lua
+-- Define extended type with custom fields
+---@class ISForageIconWithTooltip : ISForageIcon
+---@field tooltip ISToolTip|nil
+
+-- Use extended type in function signatures
+---@param self ISForageIconWithTooltip
+local function ISForageIcon_onMouseMove(self, dx, dy)
+    if not self.tooltip then
+        self.tooltip = ISToolTip:new()  -- No linter errors
+    end
+end
+```
+
+### Wrong Approach (Diagnostic Suppression):
+```lua
+-- AVOID: This pattern hides type information
+---@param self ISForageIcon
+local function ISForageIcon_onMouseMove(self, dx, dy)
+    ---@diagnostic disable-next-line: inject-field
+    if not self.tooltip then
+        ---@diagnostic disable-next-line: inject-field
+        self.tooltip = ISToolTip:new()
+    end
+end
+```
+
+### Type Casting for Return Values:
+When vanilla constructors return base types but you need specific type methods:
+```lua
+local tooltip = ISToolTip:new()  -- Returns ISBaseObject
+tooltip:initialise()
+---@cast tooltip ISToolTip  -- Cast to specific type
+tooltip:setDescription("text")  -- Now linter knows this method exists
+```
+
+**Benefits:**
+- Cleaner code without suppression comments
+- Proper type checking and IntelliSense
+- Self-documenting type extensions
+- Easier to maintain and understand
+
 ### Good Example (Concise):
 ```lua
 ---Calculates vision bonus multiplier for foraging

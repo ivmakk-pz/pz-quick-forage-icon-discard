@@ -1,0 +1,13 @@
+UI_QFID_JP = {
+    -- Option Labels
+    UI_options_QFID_discardButton = "破棄ボタン",
+    UI_options_QFID_contextMenuButton = "コンテキストメニューボタン",
+    UI_options_QFID_showTooltip = "アイテムツールチップを表示",
+    
+    -- Button Names
+    UI_options_QFID_button_RMB = "マウス右ボタン",
+    UI_options_QFID_button_RMB_default = "マウス右ボタン",
+    UI_options_QFID_button_MMB = "マウス中央ボタン",
+    UI_options_QFID_button_MB4 = "マウスボタン4",
+    UI_options_QFID_button_MB5 = "マウスボタン5",
+}

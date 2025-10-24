@@ -13,11 +13,16 @@ This workspace follows the standard Project Zomboid mod structure:
   - Contains all mod files, scripts, and resources
   - This is where you implement features, fixes, and enhancements for your mod
 
-### Reference Directory (if applicable)
-- **`Mods_Refs/`** - Reference mods for learning patterns and implementations (if included)
+### Reference Directory
+- **`Mods_Refs/`** - Reference mods for learning patterns and implementations
   - Contains source code from other mods used as reference material
   - Used to understand existing implementations, patterns, and best practices
   - **DO NOT MODIFY** - These directories should remain unchanged to preserve reference implementations
+  - **`MilkThemAll/`** - Previous mod by same author demonstrating modular architecture
+    - Example implementation of modular base system with auto-disable safenet
+    - Reference for crash recovery patterns and safe function overriding
+    - Demonstrates proper event management and error handling
+    - Shows module isolation and extensibility patterns
   - Key areas to reference:
     - Modular architecture patterns
     - UI component implementations
@@ -39,15 +44,24 @@ This workspace follows the standard Project Zomboid mod structure:
     - `ISWorldObjectContextMenu.lua` - Main context menu handler for world objects
     - `ISContextMenu.lua` - Base context menu implementation
     - `ISInventoryPaneContextMenu.lua` - Inventory panel context menu handler
-  - Supporting UI files:
-    - `ISPanel.lua` - Base UI panel class used by icon components
-    - `ISToolTip.lua` - Tooltip display system
+  - Base UI system files:
+    - `ISUIElement.lua` - Root base class for all UI elements with comprehensive mouse event handlers (onMouseDown, onMouseUp, onRightMouseDown, onRightMouseUp, onMiddleMouseDown, onMiddleMouseUp, etc.), rendering, layout, and event system
+    - `ISPanel.lua` - Base UI panel class derived from ISUIElement, used by icon components
+    - `ISButton.lua` - Button UI component with mouse hover states and click handling
+    - `ISMouseDrag.lua` - Global mouse drag state management for UI dragging operations
+    - `ISRichTextPanel.lua` - Rich text panel for displaying formatted text with automatic line wrapping, pagination, and layout calculation used by tooltips and other UI components
+  - Tooltip and UI helpers:
+    - `ISToolTip.lua` - Tooltip display system with ISRichTextPanel for description text, supports customization via maxLineWidth, nameMarginX, and other layout properties
     - `ISToolTipInv.lua` - Inventory-specific tooltips
+    - `ISToolTipItemSlot.lua` - Item slot tooltips for inventory UI
+    - `ISSetKeybindDialog.lua` - Dialog for setting custom keybindings
+  - Action and timing:
     - `ISTimedActionQueue.lua` - Queue system for managing timed actions
   - Animal tracking:
     - `ISAnimalTracksMenu.lua` - Context menu for inspecting animal tracks
     - `ISWorldItemIconTrack.lua` - Icon representation for animal tracks
   - Used for understanding vanilla behavior before implementing custom quick-discard functionality
+  - **Key for mouse button implementation**: ISUIElement.lua contains all mouse event handler definitions including middle mouse button support
 
 ### Other Directories
 - **`.github/instructions/`** - Development guidelines and modding instructions

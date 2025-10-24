@@ -24,10 +24,30 @@ This workspace follows the standard Project Zomboid mod structure:
     - Patch systems and compatibility fixes
     - Localization systems
 
-### Vanilla Game Reference Directory (if applicable)
-- **`PZ_Files/`** - Original Project Zomboid files for version comparison (if included)
-  - Used for diff analysis and understanding vanilla game changes
-  - Essential for compatibility and understanding what the game provides vs what your mod changes
+### Vanilla Game Reference Directory
+- **`PZ_files/`** - Original Project Zomboid files from Build 42.12.3 (**READ-ONLY**)
+  - **DO NOT MODIFY** - Reference only for understanding vanilla implementations
+  - Core foraging system files:
+    - `ISForageIcon.lua` - Forage icon UI component with right-click menu and discard/pickup methods
+    - `ISBaseIcon.lua` - Base class for all foraging icons with common rendering and interaction logic
+    - `forageSystem.lua` - Core foraging system definitions, loot tables, and modding API
+    - `ISForageAction.lua` - Timed action for picking up or discarding foraged items
+    - `ISSearchManager.lua` - Manages foraging search mode and icon visibility/updates
+    - `ISSearchWindow.lua` - UI window for toggling search mode and displaying foraging interface
+  - World item and context menu files:
+    - `ISWorldItemIcon.lua` - Icon representation for world items (similar to forage icons)
+    - `ISWorldObjectContextMenu.lua` - Main context menu handler for world objects
+    - `ISContextMenu.lua` - Base context menu implementation
+    - `ISInventoryPaneContextMenu.lua` - Inventory panel context menu handler
+  - Supporting UI files:
+    - `ISPanel.lua` - Base UI panel class used by icon components
+    - `ISToolTip.lua` - Tooltip display system
+    - `ISToolTipInv.lua` - Inventory-specific tooltips
+    - `ISTimedActionQueue.lua` - Queue system for managing timed actions
+  - Animal tracking:
+    - `ISAnimalTracksMenu.lua` - Context menu for inspecting animal tracks
+    - `ISWorldItemIconTrack.lua` - Icon representation for animal tracks
+  - Used for understanding vanilla behavior before implementing custom quick-discard functionality
 
 ### Other Directories
 - **`.github/instructions/`** - Development guidelines and modding instructions

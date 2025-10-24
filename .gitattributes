@@ -1,0 +1,2 @@
+# Ensure mod.info files always use CRLF line endings
+**/mod.info text eol=crlf

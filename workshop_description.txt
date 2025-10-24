@@ -1,0 +1,27 @@
+[b]Quick Forage Icon Discard[/b] - Quick discard by single mouse click (RMB by default) instead of context menu
+
+Quickly discard foraged items with a single mouse click instead of opening the context menu. Save time and streamline your foraging experience!
+
+[h2]Features[/h2]
+[list]
+[*]Quick discard forage items with a single click
+[*]Customizable mouse button (RMB by default)
+[*]No context menu needed
+[/list]
+
+[h2]Installation[/h2]
+[olist]
+[*]Subscribe to this mod on Steam Workshop
+[*]Enable the mod in your mod list
+[*]Start playing!
+[/olist]
+
+[h2]Compatibility[/h2]
+[list]
+[*]Compatible with Project Zomboid Build 42+
+[*]Works with most other mods
+[*]Safe to add/remove mid-game
+[/list]
+
+[h2]Feedback[/h2]
+Found a bug or have suggestions? Leave a comment!

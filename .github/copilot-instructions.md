@@ -145,7 +145,7 @@ When implementing a feature (only when explicitly requested), focus solely on:
 
 ## Steam Workshop Integration
 
-- Update `workshop_description.txt` with proper formatting following `.github/instructions/steam_syntax.instructions.md`
+- Update `workshop_description.bbcode` with proper formatting following `.github/instructions/steam_syntax.instructions.md`
 - Maintain `CHANGELOG.md` for version history using `.github/instructions/changelog.instructions.md`
 - Keep workshop assets in `workshop_assets/` directory
 - Follow Steam Workshop guidelines and best practices

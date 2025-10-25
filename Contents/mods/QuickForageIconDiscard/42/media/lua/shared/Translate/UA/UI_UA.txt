@@ -1,6 +1,6 @@
 UI_QFID_UA = {
     -- Option Labels
-    UI_options_QFID_discardButton = "Кнопка викидання",
+    UI_options_QFID_discardButton = "Кнопка відмови",
     UI_options_QFID_contextMenuButton = "Кнопка контекстного меню",
     UI_options_QFID_showTooltip = "Показати підказку предмета",
     

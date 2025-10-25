@@ -121,23 +121,15 @@ function QFID_Tooltip:setupModule()
         QFID_Utils.logError("ISForageIcon not found - tooltip will not work!")
         return
     end
-    
-    QFID_Utils.logInfo("Setting up Tooltip module...")
-    
-    -- Override mouse movement handlers for tooltip
-    if not ISForageIcon.onMouseMove then
-        ISForageIcon.onMouseMove = function() end
-    end
+       
+    -- Create stubs for mouse movement handlers (vanilla doesn't always define them)
+    ISForageIcon.onMouseMove = ISForageIcon.onMouseMove or function() end
     self:overrideFunction(ISForageIcon, "onMouseMove", ISForageIcon_onMouseMove)
-    QFID_Utils.logInfo("Successfully hooked ISForageIcon.onMouseMove (Show tooltip)")
     
-    if not ISForageIcon.onMouseMoveOutside then
-        ISForageIcon.onMouseMoveOutside = function() end
-    end
+    ISForageIcon.onMouseMoveOutside = ISForageIcon.onMouseMoveOutside or function() end
     self:overrideFunction(ISForageIcon, "onMouseMoveOutside", ISForageIcon_onMouseMoveOutside)
-    QFID_Utils.logInfo("Successfully hooked ISForageIcon.onMouseMoveOutside (Hide tooltip)")
     
-    QFID_Utils.logInfo("Tooltip module setup complete!")
+    QFID_Utils.logInfo("Tooltip module initialized successfully")
 end
 
 -- ===================================================================================================== --

@@ -1,6 +1,6 @@
 UI_QFID_DE = {
     -- Option Labels
-    UI_options_QFID_discardButton = "Wegwerf-Taste",
+    UI_options_QFID_discardButton = "Ignorieren-Taste",
     UI_options_QFID_contextMenuButton = "Kontextmenü-Taste",
     UI_options_QFID_showTooltip = "Gegenstands-Tooltip anzeigen",
     

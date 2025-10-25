@@ -1,6 +1,6 @@
 UI_QFID_JP = {
     -- Option Labels
-    UI_options_QFID_discardButton = "破棄ボタン",
+    UI_options_QFID_discardButton = "廃棄ボタン",
     UI_options_QFID_contextMenuButton = "コンテキストメニューボタン",
     UI_options_QFID_showTooltip = "アイテムツールチップを表示",
     

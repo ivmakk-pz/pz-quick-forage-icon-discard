@@ -1,6 +1,6 @@
 UI_QFID_HU = {
     -- Option Labels
-    UI_options_QFID_discardButton = "Eldobás gomb",
+    UI_options_QFID_discardButton = "Elvetés gomb",
     UI_options_QFID_contextMenuButton = "Helyi menü gomb",
     UI_options_QFID_showTooltip = "Tárgy eszköztipp megjelenítése",
     

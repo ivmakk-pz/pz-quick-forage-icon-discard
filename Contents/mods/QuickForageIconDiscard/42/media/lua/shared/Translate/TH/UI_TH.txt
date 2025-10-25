@@ -1,6 +1,6 @@
 UI_QFID_TH = {
     -- Option Labels
-    UI_options_QFID_discardButton = "ปุ่มทิ้ง",
+    UI_options_QFID_discardButton = "ปุ่มทำลาย",
     UI_options_QFID_contextMenuButton = "ปุ่มเมนูบริบท",
     UI_options_QFID_showTooltip = "แสดงคำแนะนำเครื่องมือของไอเทม",
     

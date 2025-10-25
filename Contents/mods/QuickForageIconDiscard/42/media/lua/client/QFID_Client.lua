@@ -9,12 +9,10 @@ local QFID_Tooltip = require "Modules/QFID_Tooltip"
 
 local QuickForageIconDiscard = {}
 
-
 function QuickForageIconDiscard.init()
-    QFID_Utils.logInfo("Loading client-side components...")
+    QFID_Utils.logInfo("Quick Forage Icon Discard v" .. QFID_Utils.MOD_VERSION .. " - Initializing...")
     
     QFID_QuickDiscard.initialise()
-
     QFID_Tooltip.initialise()
     
     QFID_Utils.logInfo("Client initialization complete")

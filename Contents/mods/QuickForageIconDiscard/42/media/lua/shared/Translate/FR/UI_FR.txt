@@ -1,6 +1,6 @@
 UI_QFID_FR = {
     -- Option Labels
-    UI_options_QFID_discardButton = "Bouton de rejet",
+    UI_options_QFID_discardButton = "Bouton d'ignorer",
     UI_options_QFID_contextMenuButton = "Bouton de menu contextuel",
     UI_options_QFID_showTooltip = "Afficher l'infobulle de l'objet",
     

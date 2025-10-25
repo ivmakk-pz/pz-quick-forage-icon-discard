@@ -1,6 +1,6 @@
 # Workshop Update History
 
-v1.0.0 - 2025-10-24
+v1.0.0 - 2025-10-25
 
 Added:
 - Initial release

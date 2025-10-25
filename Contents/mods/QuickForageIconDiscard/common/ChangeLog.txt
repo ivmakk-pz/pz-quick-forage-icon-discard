@@ -1,4 +1,4 @@
-[ v1.0.0 - 2025-10-24 ]
+[ v1.0.0 - 2025-10-25 ]
 Added:
 - Initial release
 - One-click discard for forage icons via customizable mouse button (RMB default)

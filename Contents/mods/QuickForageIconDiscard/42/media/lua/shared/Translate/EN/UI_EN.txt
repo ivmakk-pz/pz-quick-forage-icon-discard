@@ -8,6 +8,5 @@ UI_QFID_EN = {
     UI_options_QFID_button_RMB = "Right Mouse Button",
     UI_options_QFID_button_RMB_default = "Right Mouse Button",
     UI_options_QFID_button_MMB = "Middle Mouse Button",
-    UI_options_QFID_button_MB4 = "Mouse Button 4",
-    UI_options_QFID_button_MB5 = "Mouse Button 5",
+    UI_options_QFID_button_MB_template = "Mouse Button %1",  -- Template for extra buttons 4-8
 }

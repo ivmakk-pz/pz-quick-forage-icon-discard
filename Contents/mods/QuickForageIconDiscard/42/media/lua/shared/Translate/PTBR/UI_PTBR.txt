@@ -1,13 +1,12 @@
 UI_QFID_PTBR = {
     -- Option Labels
-    UI_options_QFID_discardButton = "Botão de descartar",
+    UI_options_QFID_discardButton = "Botão de descarte",
     UI_options_QFID_contextMenuButton = "Botão de menu contextual",
-    UI_options_QFID_showTooltip = "Mostrar dica do item",
+    UI_options_QFID_showTooltip = "Mostrar dica de item",
     
     -- Button Names
     UI_options_QFID_button_RMB = "Botão direito do mouse",
     UI_options_QFID_button_RMB_default = "Botão direito do mouse",
     UI_options_QFID_button_MMB = "Botão do meio do mouse",
-    UI_options_QFID_button_MB4 = "Botão do mouse 4",
-    UI_options_QFID_button_MB5 = "Botão do mouse 5",
+    UI_options_QFID_button_MB_template = "Botão do mouse %1",
 }

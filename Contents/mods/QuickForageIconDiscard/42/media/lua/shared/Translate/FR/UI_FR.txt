@@ -2,12 +2,11 @@ UI_QFID_FR = {
     -- Option Labels
     UI_options_QFID_discardButton = "Bouton de rejet",
     UI_options_QFID_contextMenuButton = "Bouton de menu contextuel",
-    UI_options_QFID_showTooltip = "Afficher l'info-bulle de l'objet",
+    UI_options_QFID_showTooltip = "Afficher l'infobulle de l'objet",
     
     -- Button Names
     UI_options_QFID_button_RMB = "Bouton droit de la souris",
     UI_options_QFID_button_RMB_default = "Bouton droit de la souris",
-    UI_options_QFID_button_MMB = "Bouton du milieu de la souris",
-    UI_options_QFID_button_MB4 = "Bouton de souris 4",
-    UI_options_QFID_button_MB5 = "Bouton de souris 5",
+    UI_options_QFID_button_MMB = "Bouton central de la souris",
+    UI_options_QFID_button_MB_template = "Bouton de souris %1",
 }

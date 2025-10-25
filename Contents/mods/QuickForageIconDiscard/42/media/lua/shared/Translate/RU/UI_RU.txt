@@ -8,6 +8,5 @@ UI_QFID_RU = {
     UI_options_QFID_button_RMB = "Правая кнопка мыши",
     UI_options_QFID_button_RMB_default = "Правая кнопка мыши",
     UI_options_QFID_button_MMB = "Средняя кнопка мыши",
-    UI_options_QFID_button_MB4 = "Кнопка мыши 4",
-    UI_options_QFID_button_MB5 = "Кнопка мыши 5",
+    UI_options_QFID_button_MB_template = "Кнопка мыши %1",
 }

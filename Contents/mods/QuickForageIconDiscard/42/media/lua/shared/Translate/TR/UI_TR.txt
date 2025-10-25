@@ -1,13 +1,12 @@
 UI_QFID_TR = {
     -- Option Labels
-    UI_options_QFID_discardButton = "Atma düğmesi",
-    UI_options_QFID_contextMenuButton = "Bağlam menüsü düğmesi",
-    UI_options_QFID_showTooltip = "Öğe ipucunu göster",
+    UI_options_QFID_discardButton = "Atma Düğmesi",
+    UI_options_QFID_contextMenuButton = "Bağlam Menüsü Düğmesi",
+    UI_options_QFID_showTooltip = "Öğe İpucunu Göster",
     
     -- Button Names
-    UI_options_QFID_button_RMB = "Sağ fare düğmesi",
-    UI_options_QFID_button_RMB_default = "Sağ fare düğmesi",
-    UI_options_QFID_button_MMB = "Orta fare düğmesi",
-    UI_options_QFID_button_MB4 = "Fare düğmesi 4",
-    UI_options_QFID_button_MB5 = "Fare düğmesi 5",
+    UI_options_QFID_button_RMB = "Sağ Fare Düğmesi",
+    UI_options_QFID_button_RMB_default = "Sağ Fare Düğmesi",
+    UI_options_QFID_button_MMB = "Orta Fare Düğmesi",
+    UI_options_QFID_button_MB_template = "Fare Düğmesi %1",
 }

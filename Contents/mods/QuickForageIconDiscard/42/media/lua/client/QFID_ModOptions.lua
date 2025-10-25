@@ -17,11 +17,10 @@ local QFID_ModOptions = {
 -- ===================================================================================================== --
 
 ---Get the discard button binding
----@return number buttonCode Mouse button code (10001=RMB, 10002=MMB, etc.)
+---@return number buttonCode Mouse button code (10001=RMB, 10002=MMB, etc.) or QFID_Utils.BUTTON_NONE (-1) if disabled
 function QFID_ModOptions.getDiscardButton()
     local value = QFID_ModOptions.discardButtonOption and QFID_ModOptions.discardButtonOption:getValue() or 1
-    -- Map index to button code: 1=RMB, 2=MMB, 3-4=Side buttons (LMB removed to avoid conflict with grab)
-    local buttons = {Mouse.RMB, Mouse.MMB, Mouse.BTN_3, Mouse.BTN_4}
+    local buttons = {Mouse.RMB, Mouse.MMB, Mouse.BTN_3, Mouse.BTN_4, Mouse.BTN_5, Mouse.BTN_6, QFID_Utils.BUTTON_NONE}
     return buttons[value] or Mouse.RMB
 end
 
@@ -29,8 +28,7 @@ end
 ---@return number buttonCode Mouse button code (10001=RMB, 10002=MMB, etc.)
 function QFID_ModOptions.getContextMenuButton()
     local value = QFID_ModOptions.contextMenuButtonOption and QFID_ModOptions.contextMenuButtonOption:getValue() or 2
-    -- Map index to button code: 1=RMB, 2=MMB, 3-4=Side buttons (LMB removed to avoid conflict with grab)
-    local buttons = {Mouse.RMB, Mouse.MMB, Mouse.BTN_3, Mouse.BTN_4}
+    local buttons = {Mouse.RMB, Mouse.MMB, Mouse.BTN_3, Mouse.BTN_4, Mouse.BTN_5, Mouse.BTN_6}
     return buttons[value] or Mouse.MMB
 end
 
@@ -67,8 +65,10 @@ function QFID_ModOptions.initialize()
     )
     QFID_ModOptions.discardButtonOption:addItem(getText("UI_options_QFID_button_RMB") .. DEFAULT_OPTION_MARKER, true)   -- RMB (default)
     QFID_ModOptions.discardButtonOption:addItem(getText("UI_options_QFID_button_MMB"), false)  -- MMB
-    QFID_ModOptions.discardButtonOption:addItem(getText("UI_options_QFID_button_MB4"), false)  -- Mouse Button 4
-    QFID_ModOptions.discardButtonOption:addItem(getText("UI_options_QFID_button_MB5"), false)  -- Mouse Button 5
+    for i = 4, 7 do
+        QFID_ModOptions.discardButtonOption:addItem(getText("UI_options_QFID_button_MB_template", tostring(i)), false)
+    end
+    QFID_ModOptions.discardButtonOption:addItem(getText("UI_None"), false)  -- None (disabled)
     
     -- Context menu button option
     QFID_ModOptions.contextMenuButtonOption = options:addComboBox(
@@ -77,8 +77,9 @@ function QFID_ModOptions.initialize()
     )
     QFID_ModOptions.contextMenuButtonOption:addItem(getText("UI_options_QFID_button_RMB_default"), false)  -- RMB (game default)
     QFID_ModOptions.contextMenuButtonOption:addItem(getText("UI_options_QFID_button_MMB") .. DEFAULT_OPTION_MARKER, true)  -- MMB (default)
-    QFID_ModOptions.contextMenuButtonOption:addItem(getText("UI_options_QFID_button_MB4"), false)          -- Mouse Button 4
-    QFID_ModOptions.contextMenuButtonOption:addItem(getText("UI_options_QFID_button_MB5"), false)          -- Mouse Button 5
+    for i = 4, 7 do
+        QFID_ModOptions.contextMenuButtonOption:addItem(getText("UI_options_QFID_button_MB_template", tostring(i)), false)
+    end
     
     -- Show tooltip option
     QFID_ModOptions.showTooltipOption = options:addTickBox(

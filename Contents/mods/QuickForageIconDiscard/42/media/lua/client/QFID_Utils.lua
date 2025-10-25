@@ -6,6 +6,9 @@ local QFID_Utils = {}
 -- Mod version - Update this during release process
 QFID_Utils.MOD_VERSION = "1.0.0"
 
+-- Mouse button constants
+QFID_Utils.BUTTON_NONE = -1  -- Special value indicating no button assigned
+
 local DEBUG_MODE = false
 
 ---Core logging function

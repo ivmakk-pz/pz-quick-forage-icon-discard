@@ -7,7 +7,6 @@ UI_QFID_JP = {
     -- Button Names
     UI_options_QFID_button_RMB = "マウス右ボタン",
     UI_options_QFID_button_RMB_default = "マウス右ボタン",
-    UI_options_QFID_button_MMB = "マウス中央ボタン",
-    UI_options_QFID_button_MB4 = "マウスボタン4",
-    UI_options_QFID_button_MB5 = "マウスボタン5",
+    UI_options_QFID_button_MMB = "マウス中ボタン",
+    UI_options_QFID_button_MB_template = "マウスボタン %1",
 }

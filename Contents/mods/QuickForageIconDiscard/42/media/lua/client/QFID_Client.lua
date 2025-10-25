@@ -7,19 +7,14 @@ local QFID_ModOptions = require "QFID_ModOptions"
 local QFID_QuickDiscard = require "Modules/QFID_QuickDiscard"
 local QFID_Tooltip = require "Modules/QFID_Tooltip"
 
--- Main mod initialization
 local QuickForageIconDiscard = {}
 
--- Initialize the mod
+
 function QuickForageIconDiscard.init()
     QFID_Utils.logInfo("Loading client-side components...")
     
-    -- Initialize quick discard module (RMB discard, MMB context menu)
-    -- ModuleBase handles all error checking and auto-disable internally
     QFID_QuickDiscard.initialise()
-    
-    -- Initialize tooltip module (item name on hover)
-    -- Separate module for fault isolation - if one breaks, the other keeps working
+
     QFID_Tooltip.initialise()
     
     QFID_Utils.logInfo("Client initialization complete")

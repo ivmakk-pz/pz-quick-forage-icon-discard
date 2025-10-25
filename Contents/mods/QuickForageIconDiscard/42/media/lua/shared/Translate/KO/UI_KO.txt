@@ -1,13 +1,12 @@
 UI_QFID_KO = {
     -- Option Labels
-    UI_options_QFID_discardButton = "폐기 버튼",
+    UI_options_QFID_discardButton = "버리기 버튼",
     UI_options_QFID_contextMenuButton = "컨텍스트 메뉴 버튼",
     UI_options_QFID_showTooltip = "아이템 툴팁 표시",
     
     -- Button Names
     UI_options_QFID_button_RMB = "마우스 오른쪽 버튼",
     UI_options_QFID_button_RMB_default = "마우스 오른쪽 버튼",
-    UI_options_QFID_button_MMB = "마우스 중간 버튼",
-    UI_options_QFID_button_MB4 = "마우스 버튼 4",
-    UI_options_QFID_button_MB5 = "마우스 버튼 5",
+    UI_options_QFID_button_MMB = "마우스 가운데 버튼",
+    UI_options_QFID_button_MB_template = "마우스 버튼 %1",
 }

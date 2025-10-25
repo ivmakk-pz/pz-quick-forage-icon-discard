@@ -1,13 +1,12 @@
 UI_QFID_CN = {
     -- Option Labels
     UI_options_QFID_discardButton = "丢弃按钮",
-    UI_options_QFID_contextMenuButton = "右键菜单按钮",
+    UI_options_QFID_contextMenuButton = "上下文菜单按钮",
     UI_options_QFID_showTooltip = "显示物品提示",
     
     -- Button Names
     UI_options_QFID_button_RMB = "鼠标右键",
     UI_options_QFID_button_RMB_default = "鼠标右键",
     UI_options_QFID_button_MMB = "鼠标中键",
-    UI_options_QFID_button_MB4 = "鼠标按钮4",
-    UI_options_QFID_button_MB5 = "鼠标按钮5",
+    UI_options_QFID_button_MB_template = "鼠标按钮 %1",
 }

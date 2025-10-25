@@ -1,6 +1,6 @@
 UI_QFID_UA = {
     -- Option Labels
-    UI_options_QFID_discardButton = "Кнопка видалення",
+    UI_options_QFID_discardButton = "Кнопка викидання",
     UI_options_QFID_contextMenuButton = "Кнопка контекстного меню",
     UI_options_QFID_showTooltip = "Показати підказку предмета",
     
@@ -8,6 +8,5 @@ UI_QFID_UA = {
     UI_options_QFID_button_RMB = "Права кнопка миші",
     UI_options_QFID_button_RMB_default = "Права кнопка миші",
     UI_options_QFID_button_MMB = "Середня кнопка миші",
-    UI_options_QFID_button_MB4 = "Кнопка миші 4",
-    UI_options_QFID_button_MB5 = "Кнопка миші 5",
+    UI_options_QFID_button_MB_template = "Кнопка миші %1",
 }

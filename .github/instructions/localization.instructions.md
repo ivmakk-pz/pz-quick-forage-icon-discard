@@ -73,6 +73,41 @@ applyTo: '**/Translate/**/*_*.txt'
 4. **Use correct encoding** - See language table above for specific encoding requirements
 5. **Translate all entries** from both English reference files
 
+## Template Variables and Reuse
+
+### Template Variable System
+Project Zomboid supports template variables using `%1`, `%2`, `%3`, etc. as placeholders that can be replaced with values when the translation is used.
+
+**Examples from vanilla game:**
+```
+UI_servers_Ping = "Ping : %1",
+UI_challengeplayer_PlayedTime = "Played time : %1",
+Challenge_Challenge2_ButtonSkill = "%1 Lvl %2 - %3 XP",
+```
+
+### Using Template Variables in Your Mod
+Instead of repeating text, create base templates:
+
+```lua
+-- In translation file
+UI_options_QFID_example_template = "Item %1 of %2",
+UI_options_QFID_status_message = "Status: %1",
+
+-- In Lua code
+local function getStatusText(status)
+    return getText("UI_options_QFID_status_message", status)
+end
+
+-- Usage:
+local activeText = getStatusText("Active")      -- "Status: Active"
+local inactiveText = getStatusText("Inactive")  -- "Status: Inactive"
+```
+
+### Translation Reuse
+- You can reference vanilla translation keys: `getText("UI_Yes")`, `getText("UI_No")`
+- Template variables are processed in Lua code, not in translation files
+- Keep translation files as static text definitions for consistency
+
 ## Example Format
 ```lua
 IGUI_QFID_DE = {

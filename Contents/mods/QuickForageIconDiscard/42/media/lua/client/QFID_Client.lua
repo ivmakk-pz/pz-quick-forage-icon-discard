@@ -6,6 +6,7 @@ local QFID_Utils = require "QFID_Utils"
 local QFID_ModOptions = require "QFID_ModOptions"
 local QFID_QuickDiscard = require "Modules/QFID_QuickDiscard"
 local QFID_Tooltip = require "Modules/QFID_Tooltip"
+local QFID_EnduranceModifier = require "Modules/QFID_EnduranceModifier"
 
 local QuickForageIconDiscard = {}
 
@@ -14,6 +15,7 @@ function QuickForageIconDiscard.init()
     
     QFID_QuickDiscard.initialise()
     QFID_Tooltip.initialise()
+    QFID_EnduranceModifier.initialise()
     
     QFID_Utils.logInfo("Client initialization complete")
 end

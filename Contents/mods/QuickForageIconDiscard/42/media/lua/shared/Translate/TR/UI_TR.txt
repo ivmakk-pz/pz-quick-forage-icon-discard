@@ -3,6 +3,10 @@ UI_QFID_TR = {
     UI_options_QFID_discardButton = "Atma Düğmesi",
     UI_options_QFID_contextMenuButton = "Bağlam Menüsü Düğmesi",
     UI_options_QFID_showTooltip = "Öğe İpucunu Göster",
+    UI_options_QFID_discardEnduranceModifier = "Atma Dayanıklılık Cezası",
+    
+    -- Option Tooltips
+    UI_options_QFID_discardEnduranceModifier_tooltip = "Öğeleri atarken dayanıklılık maliyeti. 0% = maliyet yok, 50% = varsayılan, 100% = temel oyun.",
     
     -- Button Names
     UI_options_QFID_button_RMB = "Sağ Fare Düğmesi",

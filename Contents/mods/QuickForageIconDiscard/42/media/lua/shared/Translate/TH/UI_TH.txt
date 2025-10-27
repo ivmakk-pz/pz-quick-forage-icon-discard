@@ -3,6 +3,10 @@ UI_QFID_TH = {
     UI_options_QFID_discardButton = "ปุ่มทำลาย",
     UI_options_QFID_contextMenuButton = "ปุ่มเมนูบริบท",
     UI_options_QFID_showTooltip = "แสดงคำแนะนำเครื่องมือของไอเทม",
+    UI_options_QFID_discardEnduranceModifier = "โทษความอดทนในการทิ้ง",
+    
+    -- Option Tooltips
+    UI_options_QFID_discardEnduranceModifier_tooltip = "ต้นทุนความอดทนเมื่อทิ้งไอเทม 0% = ไม่มีต้นทุน, 50% = ค่าเริ่มต้น, 100% = เกมพื้นฐาน",
     
     -- Button Names
     UI_options_QFID_button_RMB = "ปุ่มเมาส์ขวา",

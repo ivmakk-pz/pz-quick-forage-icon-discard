@@ -1,5 +1,10 @@
 # Workshop Update History
 
+v1.1.0 - 2025-10-27
+
+Added:
+- Configurable endurance cost for discard actions (0-100%, default 50%)
+
 v1.0.0 - 2025-10-25
 
 Added:

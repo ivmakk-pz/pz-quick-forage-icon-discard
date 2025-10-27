@@ -1,6 +1,9 @@
 # Changelog
 
-## [Unreleased]
+## [1.1.0] - 2025-10-27
+
+### Added
+- Configurable endurance cost for discard actions (0-100% slider, default 50%)
 
 ## [1.0.0] - 2025-10-25
 

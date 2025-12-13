@@ -1,20 +1,28 @@
+--
+-- eris
+--
 require "Foraging/forageSystem";
 require "TimedActions/ISBaseTimedAction";
 ISForageAction = ISBaseTimedAction:derive("ISForageAction");
 
 function ISForageAction:isValid()
+	--if not (self.manager and self.manager.forageIcons[self.forageIcon.iconID]) then return false; end; --required check for some split screen coop situations
 	if not self.forageIcon.square and self.character:getSquare() then return false; end; --ensure the icon and players have a valid square, or can walk there as it may not be loaded.
 	if self.forageIcon.square:isBlockedTo(self.character:getSquare()) then return false; end; --ensure character can reach and see the item
 	return true;
 end
 
 function ISForageAction:waitToStart()
-    self.character:faceLocation(self.forageIcon.square:getX(), self.forageIcon.square:getY());
+	if not self.discardItems then
+		self.character:faceLocation(self.forageIcon.square:getX(), self.forageIcon.square:getY());
+	end;
 	return self.character:shouldBeTurning();
 end
 
 function ISForageAction:update()
-    self.character:faceLocation(self.forageIcon.square:getX(), self.forageIcon.square:getY())
+	if not self.discardItems then
+		self.character:faceLocation(self.forageIcon.square:getX(), self.forageIcon.square:getY())
+	end
 	self.character:setMetabolicTarget(Metabolics.LightWork);
 end
 
@@ -24,8 +32,12 @@ end
 
 function ISForageAction:start()
 	self.action:setUseProgressBar(false);
-    self:setActionAnim("Forage");
-    self:setOverrideHandModels(nil, nil);
+	if self.discardItems then
+		self:perform();
+	else
+		self:setActionAnim("Forage");
+		self:setOverrideHandModels(nil, nil);
+	end;
 end
 
 function ISForageAction:perform()
@@ -49,6 +61,7 @@ function ISForageAction:forage()
 	--
 	-- add the items to player inventory
 	-- these items are generated when the icon is first spotted in self.forageIcon.itemList
+	--local itemsAdded = forageSystem.addOrDropItems(self.character, self.targetContainer, self.forageIcon.itemList, self.discardItems);
 	local itemsAdded = self.forageIcon.itemList
 	local itemsTable = {};
 	for i = 0, itemsAdded:size() - 1 do
@@ -58,6 +71,7 @@ function ISForageAction:forage()
 	end;
 	--
 	--create the halo note, injecting the item image
+	--TODO: this requires item images to be in media/textures - should get the image location from the texture here instead
 	local itemTexture;
 	for _, itemData in pairs(itemsTable) do
 		local item = itemData.item;
@@ -71,13 +85,16 @@ function ISForageAction:forage()
 		else
 			itemTexture = ""
 		end
-        HaloTextHelper.addText(self.character,itemTexture.."    "..self.itemCount.. " "..item:getDisplayName());
+		if not self.discardItems then
+			HaloTextHelper.addText(self.character,itemTexture.."    "..self.itemCount.. " "..item:getDisplayName());
+		end;
 	end;
 end
 
 
 function ISForageAction:complete()
 	-- add the items to player inventory
+	forageSystem.giveItemXP(self.character, self.itemDef, 0.75);
 	local itemList;
 	if isServer() then
 	    itemList = ArrayList.new();
@@ -87,7 +104,7 @@ function ISForageAction:complete()
 	else
 	    itemList = self.forageIcon.itemList or ArrayList.new();
 	end
-	forageSystem.addOrDropItems(self.character, self.targetContainer, itemList)
+	forageSystem.addOrDropItems(self.character, self.targetContainer, itemList, self.discardItems)
 
 	return true;
 end
@@ -95,13 +112,18 @@ end
 function ISForageAction:getDuration()
 	if self.character:isTimedActionInstant() then
 		return 1;
-	end;
-    return 50;
+	end
+	if self.discardItems then
+		return 10;
+	else
+		return 50;
+	end
 end
 
-function ISForageAction:new(character, iconID, itemTypeList, targetContainer, itemType)
+function ISForageAction:new(character, iconID, itemTypeList, targetContainer, discardItems, itemType)
 	local o = ISBaseTimedAction.new(self, character);
 	o.targetContainer = targetContainer;
+	o.discardItems = discardItems;
 	o.itemType = itemType;
 	o.itemTypeList = itemTypeList;
 	--
@@ -113,8 +135,13 @@ function ISForageAction:new(character, iconID, itemTypeList, targetContainer, it
 	end;
 	o.itemDef = forageSystem.itemDefs[o.itemType];
 	--
-    o.stopOnWalk = false;
-    o.stopOnRun = true;
+	if o.discardItems then
+		o.stopOnWalk = true;
+		o.stopOnRun = true;
+	else
+		o.stopOnWalk = false;
+		o.stopOnRun = true;
+	end
 	o.maxTime = o:getDuration();
 	o.currentTime = 0;
 	o.started = false;

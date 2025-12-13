@@ -1,7 +1,17 @@
+--[[---------------------------------------------
+-------------------------------------------------
+--
+-- ISBaseIcon
+--
+-- eris
+--
+-------------------------------------------------
+--]]---------------------------------------------
 require "Foraging/forageSystem";
 require "ISUI/ISPanel";
 ISBaseIcon = ISPanel:derive("ISBaseIcon");
-
+-------------------------------------------------
+-------------------------------------------------
 ISBaseIcon.managedMarkers = {
 	isoMarker	= "isoMarkers",
 	worldMarker	= "worldMarkers",
@@ -13,13 +23,17 @@ ISBaseIcon.updateEvents = {
 	{ method = "updatePerkLevel",           tick = 20 },
 	{ method = "updateModifiers",           tick = 30 },
 };
-
+-------------------------------------------------
+-------------------------------------------------
 local pinIconBlank      = getTexture("media/textures/Foraging/pinIconBlank.png");
 local pinIconUnknown    = getTexture("media/textures/Foraging/pinIconUnknown.png");
 local poisonIcon        = getTexture("media/ui/SkullPoison.png");
+-------------------------------------------------
+-------------------------------------------------
 local math = math;
 local getTimestampMs = getTimestampMs;
-
+-------------------------------------------------
+-------------------------------------------------
 local function iterList(_list)
 	local list = _list;
 	local size = list:size() - 1;
@@ -36,35 +50,43 @@ local function clamp(_value, _min, _max)
 	if _min > _max then _min, _max = _max, _min; end;
 	return math.min(math.max(_value, _min), _max);
 end
-
-local function getDistance2D(_x1, _y1, _x2, _y2)
-    return math.sqrt(math.abs(_x2 - _x1)^2 + math.abs(_y2 - _y1)^2);
-end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:isValid() 				return true; 					end;
 function ISBaseIcon:onRightMouseUp() 		return false; 					end;
 function ISBaseIcon:onRightMouseDown()		return false;					end;
 function ISBaseIcon:doPickup()				return false;					end;
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getAlpha()		 		return self.textureColor.a; 	end;
 function ISBaseIcon:getColor()			 	return self.textureColor; 		end;
 function ISBaseIcon:setAlpha(_a)			self.textureColor.a = _a;		end;
 function ISBaseIcon:setColor(_rgba) 		self.textureColor = _rgba;		end;
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:prerender() 											end;
 function ISBaseIcon:renderWorldIcon() 										end;
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getGridSquare()			return self:initGridSquare();	end;
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:doSearchFocusCheck()									end;
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:setIsBeingRemoved(_isBeingRemoved)
 	self.isBeingRemoved = _isBeingRemoved;
 end;
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getGameSpeed()
 	if UIManager and UIManager.getSpeedControls then
 		return UIManager.getSpeedControls():getCurrentGameSpeed();
 	end;
 	return 1;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:doGrabSubMenu(_context, _contextOption, _inventory)
 	local contextMenu = _context;
 	local contextOption = _contextOption;
@@ -130,7 +152,6 @@ function ISBaseIcon:doContextMenu(_context)
 			plInvOption.onSelect = nil;
 			plInvOption.notAvailable = true;
 		end;
-
 		for _, backpack in ipairs(bpList) do
 			local bpItem = backpack and backpack.inventory and backpack.inventory:getContainingItem();
 			if bpItem then
@@ -147,13 +168,22 @@ function ISBaseIcon:doContextMenu(_context)
 			end;
 		end;
 		contextMenu:addSubMenu(contextOption, subMenu);
+		if self.onClickDiscard then
+			if self.identified then
+				contextName = getText("UI_foraging_DiscardItem").." "..self.itemObj:getDisplayName();
+			else
+				contextName = getText("UI_foraging_DiscardItem").." "..getText("UI_foraging_UnknownItem");
+			end;
+			contextOption = contextMenu:addOption(contextName, self, self.onClickDiscard, contextMenu);
+		end;
 
 		triggerEvent("onFillSearchIconContextMenu", contextMenu, self);
 		return false;
 	end;
 	return false;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:render3DItem()
 	if self.itemObj and self.square then
 		Render3DItem(self.itemObj, self.square, self.xCoord, self.yCoord, self.zCoord, self.itemRotation);
@@ -201,7 +231,8 @@ function ISBaseIcon:render()
 		self:resetBounce();
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getAngleOffset2D(_angle1, _angle2)
 	return 180 - math.abs(math.abs(_angle1 - _angle2) - 180);
 end
@@ -223,7 +254,8 @@ function ISBaseIcon:isCenterView(_bonusAngle)
 	end;
 	return false;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getDistance3D(_x1, _y1, _z1, _x2, _y2, _z2)
 	local absX = math.abs(_x2 - _x1);
 	local absY = math.abs(_y2 - _y1);
@@ -240,7 +272,8 @@ function ISBaseIcon:isInRangeForUpdate()
 		((self.distanceToPlayer <= self.manager.radius and (not self.isDarknessCapped))
 		or (self.distanceToPlayer <= self.viewDistance));
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getIsSeen()			 			return self.isSeen; 				end;
 function ISBaseIcon:setIsSeen(_isSeen)				self.isSeen = _isSeen; 				end;
 function ISBaseIcon:getIsSeenThisUpdate() 			return self.isSeenThisUpdate; 		end;
@@ -373,7 +406,8 @@ function ISBaseIcon:doVisionCheck()
 	--
 	return clamp(viewDistance, minRadius, maxRadius);
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:remove() self.manager:removeIcon(self); end;
 
 function ISBaseIcon:reset()
@@ -386,7 +420,8 @@ function ISBaseIcon:reset()
 	self:removeIsoMarker();
 	self:removeWorldMarker();
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getScreenDelta() return -getPlayerScreenLeft(self.player), -getPlayerScreenTop(self.player); end;
 
 function ISBaseIcon:updateZoom() self.zoom = getCore():getZoom(self.player); end;
@@ -416,7 +451,8 @@ function ISBaseIcon:updatePinIconSize()
 	self:setWidth(self.baseWidth / self.zoom);
 	self:setHeight(self.baseHeight / self.zoom);
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:initItem()
 	if (not self.itemObj) then
 		if self.icon then
@@ -476,18 +512,21 @@ function ISBaseIcon:getItemList()
 	end;
 	self:checkForPoison();
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:updateTimestamp()
 	self.currentTimestamp = getTimestampMs();
 	if self.lastTimestamp <= 0 then self.lastTimestamp = self.currentTimestamp; end;
+	--spot items faster if aiming/crouching
 	local aiming = math.max(forageSystem.getAimVisionBonus(self.character) * self.manager.aimMulti, 1);
 	local sneaking = math.max(forageSystem.getSneakVisionBonus(self.character) * self.manager.sneakMulti, 1);
 	self.timeDelta = (self.currentTimestamp - self.lastTimestamp) * math.max(aiming, sneaking, 1);
 	self.lastTimestamp = self.currentTimestamp;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:checkIsSpotted()
-    if self:getSpotTimer() >= self.spotTimerMax then self:spotIcon(); end;
+	if self:getSpotTimer() >= self.spotTimerMax then self:spotIcon(); end;
 end
 
 function ISBaseIcon:updateSpotTimerMax()
@@ -533,7 +572,8 @@ function ISBaseIcon:updateSpotTimer()
 		self.spotTimer = math.max(self.spotTimer - self.timeDelta, 0);
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getIsSearchModeActive()
 	if (self.manager.isSearchMode) and (not self.character:getVehicle()) then return true; end;
 	self:reset();
@@ -550,7 +590,8 @@ end
 function ISBaseIcon:updateDistanceToPlayer()
 	self.distanceToPlayer = self:getDistance3D(self.character:getX(), self.character:getY(), self.character:getZ(), self.xCoord, self.yCoord, self.zCoord);
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:removeIsoMarker()
 	if self.isoMarker then self.isoMarker:remove(); self.isoMarker = nil; end;
 end
@@ -629,15 +670,6 @@ function ISBaseIcon:updateWorldMarker()
 		if (not self.isoMarker) then
 			self:addIsoMarker();
 		end;
-		if self.distanceSnapshot == -1 then
-			self.distanceSnapshot = math.min(getDistance2D(
-				self.manager.lastSpottedX, self.manager.lastSpottedY,
-				self.xCoord, self.yCoord),
-				self.manager.maxDistanceBonus
-			);
-			self.manager.lastSpottedX = self.xCoord;
-			self.manager.lastSpottedY = self.yCoord;
-		end;
 	else
 		self:removeWorldMarker();
 		if (not self:getIsSeen()) then
@@ -645,12 +677,16 @@ function ISBaseIcon:updateWorldMarker()
 		end;
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:getSpotTimer()			return self.spotTimer; 							        end;
 function ISBaseIcon:setSpotTimer(_time)		self.spotTimer = _time; 						        end;
 function ISBaseIcon:isNearby()				return self.distanceToPlayer <= self.maxRadius;         end;
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:checkIsForageable()     return self.isForageable;                               end;
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:checkForPoison()
 	if self.isTrack then return; end
 	self.isKnownPoison = false;
@@ -661,7 +697,8 @@ function ISBaseIcon:checkForPoison()
 		end;
 	end;
 end;
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:updateManagerMarkers()
 	local manager = self.manager;
 	local managedMarkers = self.managedMarkers;
@@ -747,7 +784,8 @@ function ISBaseIcon:update()
 	self:updateWorldMarker();
 	self:updateManagerMarkers();
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:findPinOffset()
 	if self.altWorldTexture then
         local tallestTexture = 0;
@@ -777,7 +815,8 @@ function ISBaseIcon:findTextureCenter()
 		self.textureCenter = 0;
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:resetBounce()
 	self.bounce = true;
 	self.bounceStep = 1 * math.pi;
@@ -794,7 +833,8 @@ function ISBaseIcon:updateBounce()
 		end;
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:initGridSquare()
 	local cell = getCell();
 	if cell then
@@ -842,7 +882,8 @@ function ISBaseIcon:initialise()
 	self:setFollowGameWorld(true);
 	self:setRenderThisPlayerOnly(self.player);
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISBaseIcon:new(_manager, _icon)
 	local forageSystem = forageSystem;
 	local o = {};
@@ -966,8 +1007,6 @@ function ISBaseIcon:new(_manager, _icon)
 	o.canRollForSearchFocus	= false;
 
 	o.itemRotation			= ZombRand(360);
-
-	o.distanceSnapshot		= -1;
 
 	o:initialise();
 	return o;

@@ -1,8 +1,17 @@
+--
+-- Created by IntelliJ IDEA.
+-- User: RJ
+-- Date: 20/06/2023
+-- Time: 09:18
+-- To change this template use File | Settings | File Templates.
+--
+
 require "Foraging/forageSystem";
 require "ISUI/ISPanel";
 require "Foraging/ISBaseIcon";
 ISWorldItemIconTrack = ISBaseIcon:derive("ISWorldItemIconTrack");
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIconTrack:onRightMouseUp()
     ISAnimalTracksMenu.doContextMenu(ISContextMenu.get(self.player, getMouseX(), getMouseY()), self.itemObj, getSpecificPlayer(self.player))
 --    print("do context yiha", self.itemObj)
@@ -18,7 +27,8 @@ end
 function ISWorldItemIconTrack:onRightMouseDown()
     return (self:getIsSeen() and self:getAlpha() > 0);
 end;
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIconTrack:doPickup(_x, _y, _contextOption, _targetContainer, _items)
     if _contextOption then _contextOption:hideAndChildren(); end;
     self:getGridSquare();
@@ -41,7 +51,8 @@ function ISWorldItemIconTrack:doPickup(_x, _y, _contextOption, _targetContainer,
         end;
     end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIconTrack:isValidWorldItem()
     return (self.itemObj and self.itemObj:getWorldItem()) and true or false;
 end
@@ -65,7 +76,8 @@ function ISWorldItemIconTrack:isValid()
     end;
     return false;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIconTrack:findPinOffset()
     -- IsoWorldInventoryObjects are 3/4 icon height above the world x,y coords.
     -- ISForageIcon icons are below the world x,y coords.
@@ -73,19 +85,22 @@ function ISWorldItemIconTrack:findPinOffset()
         self.pinOffset = -self.itemTexture:getHeight() * 3 / 4
     end
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIconTrack:setWorldMarkerPosition()
     self.worldMarker:setX(self.xCoord);
     self.worldMarker:setY(self.yCoord);
     self.worldMarker:setHomeOnOffsetX(IsoUtils.XToScreen(self.xCoord % 1, self.yCoord % 1, 0, 0));
     self.worldMarker:setHomeOnOffsetY(IsoUtils.YToScreen(self.xCoord % 1, self.yCoord % 1, 0, 0));
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIconTrack:checkIsForageable()
     self.isForageable = self:isValid();
     return self.isForageable;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIconTrack:new(_manager, _icon)
     local o = {};
     o = ISBaseIcon:new(_manager, _icon);
@@ -102,3 +117,5 @@ function ISWorldItemIconTrack:new(_manager, _icon)
     o:initialise();
     return o;
 end
+
+

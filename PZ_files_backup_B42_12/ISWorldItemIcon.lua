@@ -1,8 +1,18 @@
+--[[---------------------------------------------
+-------------------------------------------------
+--
+-- ISWorldItemIcon
+--
+-- eris
+--
+-------------------------------------------------
+--]]---------------------------------------------
 require "Foraging/forageSystem";
 require "ISUI/ISPanel";
 require "Foraging/ISBaseIcon";
 ISWorldItemIcon = ISBaseIcon:derive("ISWorldItemIcon");
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIcon:onRightMouseUp()
 	return self:doContextMenu();
 end;
@@ -10,7 +20,8 @@ end;
 function ISWorldItemIcon:onRightMouseDown()
 	return (self:getIsSeen() and self:getAlpha() > 0);
 end;
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIcon:doPickup(_x, _y, _contextOption, _targetContainer, _items)
 	if _contextOption then _contextOption:hideAndChildren(); end;
 	self:getGridSquare();
@@ -32,7 +43,8 @@ function ISWorldItemIcon:doPickup(_x, _y, _contextOption, _targetContainer, _ite
 		end;
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIcon:isValidWorldItem()
 	return (self.itemObj and self.itemObj:getWorldItem()) and true or false;
 end
@@ -56,7 +68,8 @@ function ISWorldItemIcon:isValid()
 	end;
 	return false;
 end
-
+----------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIcon:findPinOffset()
 	-- IsoWorldInventoryObjects are 3/4 icon height above the world x,y coords.
 	-- ISForageIcon icons are below the world x,y coords.
@@ -64,14 +77,16 @@ function ISWorldItemIcon:findPinOffset()
 		self.pinOffset = -self.itemTexture:getHeight() * 3 / 4
 	end
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIcon:setWorldMarkerPosition()
 	self.worldMarker:setX(self.xCoord);
 	self.worldMarker:setY(self.yCoord);
 	self.worldMarker:setHomeOnOffsetX(IsoUtils.XToScreen(self.xCoord % 1, self.yCoord % 1, 0, 0));
 	self.worldMarker:setHomeOnOffsetY(IsoUtils.YToScreen(self.xCoord % 1, self.yCoord % 1, 0, 0));
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIcon:checkIsForageable()
 	self.isForageable = self:isValid();
 	return self.isForageable;
@@ -94,7 +109,8 @@ function ISWorldItemIcon:checkForPoison()
 		end;
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISWorldItemIcon:new(_manager, _icon)
 	local o = {};
 	o = ISBaseIcon:new(_manager, _icon);

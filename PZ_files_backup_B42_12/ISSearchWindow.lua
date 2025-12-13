@@ -1,14 +1,25 @@
+-------------------------------------------------
+-------------------------------------------------
+--
+-- ISSearchWindow
+--
+-- eris
+--
+-------------------------------------------------
+-------------------------------------------------
 require "ISUI/ISCollapsableWindow";
 require "Foraging/ISSearchManager";
 require "Foraging/ISZoneDisplay";
-
+-------------------------------------------------
+-------------------------------------------------
 ISSearchWindow = ISCollapsableWindow:derive("ISSearchWindow");
 ISSearchWindow.players          = {};
 ISSearchWindow.showDebug        = false;
 
 local UI_BORDER_SPACING = 10
 local BUTTON_HGT = getTextManager():getFontHeight(UIFont.Small) + 6
-
+-------------------------------------------------
+-------------------------------------------------
 function ISSearchWindow:update()
 	if (not self:getIsVisible()) then return; end;
 	if self.manager.isSearchMode then
@@ -34,7 +45,8 @@ function ISSearchWindow:update()
 	end;
 	self:updateSearchFocusCategories();
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISSearchWindow:toggleForceVisionTooltip()
 	if self.tooltipForced and self.tooltipForced == "Vision" then
 		self.tooltipForced = nil;
@@ -50,7 +62,8 @@ function ISSearchWindow:toggleForceAreaTooltip()
 		self.tooltipForced = "Area";
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISSearchWindow:onToggleVisible()
 	if self:getIsVisible() then
 		self:addToUIManager();
@@ -134,6 +147,8 @@ function ISSearchWindow:isValidPrompt()
 	return self:getIsVisible();
 end
 
+-------------------------------------------------
+-------------------------------------------------
 function ISSearchWindow:checkShowFirstTimeSearchTutorial()
 	if getCore():isShowFirstTimeSearchTutorial() then
 		if not (SurvivalGuideManager.instance and SurvivalGuideManager.instance.panel) then
@@ -149,7 +164,8 @@ function ISSearchWindow:checkShowFirstTimeSearchTutorial()
 		end;
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISSearchWindow:onChangeSearchFocusCategory(_option)
 	self.searchFocusCategory = _option.options[_option.selected].data;
 end
@@ -227,7 +243,8 @@ function ISSearchWindow:initialise()
 	self:setVisible(false);
 	ISLayoutManager.RegisterWindow('ISSearchWindow', ISSearchWindow, self);
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISSearchWindow:new(_manager)
 	local o = ISCollapsableWindow:new(0, 0, 400, 0);
 	setmetatable(o, self);
@@ -267,7 +284,8 @@ function ISSearchWindow:new(_manager)
 	--
 	return o;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISSearchWindow.toggleWindow(_character)
 	if not ISSearchWindow.players[_character] then ISSearchWindow.createUI(_character:getPlayerNum()); end;
 	local searchWindow = ISSearchWindow.players[_character];
@@ -294,7 +312,8 @@ function ISSearchWindow.showWindow(_character)
 		searchWindow:checkShowFirstTimeSearchTutorial();
 	end;
 end
-
+-------------------------------------------------
+-------------------------------------------------
 function ISSearchWindow.createUI(_player)
 	local character = getSpecificPlayer(_player);
 	if (not ISSearchWindow.players[character]) then
@@ -315,9 +334,17 @@ end
 Events.OnCreatePlayer.Add(ISSearchWindow.createUI);
 Events.OnPlayerDeath.Add(ISSearchWindow.destroyUI);
 
+function ISSearchWindow.OnFillWorldObjectContextMenu(_player, _context)
+    --No need to have in in right click options
+end
+
+Events.OnFillWorldObjectContextMenu.Add(ISSearchWindow.OnFillWorldObjectContextMenu);
+
 function ISSearchWindow.onEnableSearchMode(_character, _isSearchMode)
 	local searchWindow = ISSearchWindow.players[_character];
 	if searchWindow then searchWindow:checkShowFirstTimeSearchTutorial(); end;
 end
 
 Events.onEnableSearchMode.Add(ISSearchWindow.onEnableSearchMode);
+-------------------------------------------------
+-------------------------------------------------

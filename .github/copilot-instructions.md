@@ -29,24 +29,36 @@ This workspace follows the standard Project Zomboid mod structure:
     - Patch systems and compatibility fixes
     - Localization systems
 
-### Vanilla Game Reference Directory
-- **`PZ_files/`** - Original Project Zomboid files from Build 42.12.3 (**READ-ONLY**)
+### Vanilla Game Reference Directories
+
+#### Current Version (Build 42.13.0+)
+- **`PZ_files/`** - Original Project Zomboid files from Build 42.13.0 (**READ-ONLY**)
   - **DO NOT MODIFY** - Reference only for understanding vanilla implementations
+  - **CRITICAL**: Discard functionality removed from vanilla in B42.13
   - Core foraging system files:
-    - `ISForageIcon.lua` - Forage icon UI component with right-click menu and discard/pickup methods
-    - `ISBaseIcon.lua` - Base class for all foraging icons with common rendering and interaction logic
-    - `forageSystem.lua` - Core foraging system definitions, loot tables, and modding API
-    - `ISForageAction.lua` - Timed action for picking up or discarding foraged items
+    - `ISForageIcon.lua` - Forage icon UI component (onClickDiscard removed in B42.13)
+    - `ISBaseIcon.lua` - Base class with event system (line 153: onFillSearchIconContextMenu event)
+    - `forageSystem.lua` - Core system (addOrDropItems no longer accepts _discardItems parameter)
+    - `ISForageAction.lua` - Timed action for picking up foraged items
     - `ISSearchManager.lua` - Manages foraging search mode and icon visibility/updates
-    - `ISSearchWindow.lua` - UI window for toggling search mode and displaying foraging interface
+    - `ISSearchWindow.lua` - UI window for toggling search mode
+  - New B42.13 files:
+    - `forageClient.lua` - Client-side foraging logic (MP support)
+    - `forageCategories.lua` - Foraging category definitions
+    - `forageDefinitions.lua` - Item type definitions
+    - `forageSkills.lua` - Skill calculation mechanics
+    - `forageZones.lua` - Zone configuration system
+    - `ISAnimalTracksFinder.lua` - Animal tracking functionality
+    - `scavenges.lua` - Scavenging system integration
   - World item and context menu files:
-    - `ISWorldItemIcon.lua` - Icon representation for world items (similar to forage icons)
+    - `ISWorldItemIcon.lua` - Icon representation for world items
+    - `ISWorldItemIconTrack.lua` - Animal track icon implementation
     - `ISWorldObjectContextMenu.lua` - Main context menu handler for world objects
     - `ISContextMenu.lua` - Base context menu implementation
     - `ISInventoryPaneContextMenu.lua` - Inventory panel context menu handler
   - Base UI system files:
-    - `ISUIElement.lua` - Root base class for all UI elements with comprehensive mouse event handlers (onMouseDown, onMouseUp, onRightMouseDown, onRightMouseUp, onMiddleMouseDown, onMiddleMouseUp, etc.), rendering, layout, and event system
-    - `ISPanel.lua` - Base UI panel class derived from ISUIElement, used by icon components
+    - `ISUIElement.lua` - Root base class for all UI elements with comprehensive mouse event handlers
+    - `ISPanel.lua` - Base UI panel class derived from ISUIElement
     - `ISButton.lua` - Button UI component with mouse hover states and click handling
     - `ISMouseDrag.lua` - Global mouse drag state management for UI dragging operations
     - `ISRichTextPanel.lua` - Rich text panel for displaying formatted text with automatic line wrapping, pagination, and layout calculation used by tooltips and other UI components
@@ -62,6 +74,24 @@ This workspace follows the standard Project Zomboid mod structure:
     - `ISWorldItemIconTrack.lua` - Icon representation for animal tracks
   - Used for understanding vanilla behavior before implementing custom quick-discard functionality
   - **Key for mouse button implementation**: ISUIElement.lua contains all mouse event handler definitions including middle mouse button support
+
+#### Legacy Version (Build 42.12)
+- **`PZ_files_backup_B42_12/`** - Original Project Zomboid files from Build 42.12.3 (**READ-ONLY**)
+  - **DO NOT MODIFY** - Reference only for comparison with B42.13 changes
+  - Contains original implementations of:
+    - `ISForageIcon.lua` - Original with `onClickDiscard()` method (removed in B42.13)
+    - `forageSystem.lua` - Original `addOrDropItems()` with `_discardItems` parameter (removed in B42.13)
+  - Use for comparison to understand what changed between versions
+  - Reference when re-implementing removed discard functionality
+
+### Documentation Directory
+- **`docs/`** - Build 42.13 migration documentation and guides
+  - **CHANGELOG_b42.12_to_b42.13.md** - Comprehensive breakdown of all changes affecting the mod
+  - **DISCARD_IMPLEMENTATION_GUIDE.md** - Technical guide for re-implementing discard functionality
+  - **migration_guide_to_b42.13.md** - Official PZ modding migration guide for B42.13
+  - **API_for_Inventory_Items_b42.13.md** - Inventory item API documentation
+  - **MOUSE_BUTTONS_GUIDE.md** - Mouse button implementation patterns
+  - **42.13.0-20250113.md** - Full B42.13 release notes
 
 ### Other Directories
 - **`.github/instructions/`** - Development guidelines and modding instructions
@@ -111,7 +141,28 @@ Contents/mods/QuickForageIconDiscard/42/media/lua/client/
 - **Target Platform**: Project Zomboid (Steam Workshop mod)
 - **Mod Framework**: Project Zomboid's mod system
 - **File Structure**: Standard PZ mod structure with `media/lua/` directories
-- **Build Version**: [Specify target game build version, e.g., Build 42.12]
+- **Current Target Build**: Build 42.13.0+ (as of version 1.2.0)
+- **Legacy Support**: Build 42.12.3 (version 1.1.0)
+
+## Current Development Focus: Build 42.13 Compatibility
+
+**Active Branch**: `release/v1.2.0`  
+**Target Version**: 1.2.0  
+**Critical Task**: Restore discard functionality removed in Build 42.13
+
+### Required Reading for B42.13 Update
+1. **`.github/instructions/b42.13_compatibility.instructions.md`** - Complete implementation guide
+2. **`docs/CHANGELOG_b42.12_to_b42.13.md`** - All breaking changes
+3. **`docs/DISCARD_IMPLEMENTATION_GUIDE.md`** - Technical implementation approaches
+4. **`docs/migration_guide_to_b42.13.md`** - Official modding migration guide
+
+### Key Facts About B42.13
+- Vanilla discard feature **completely removed** from foraging system
+- Reason: Multiplayer compatibility and stability improvements
+- `ISForageIcon.onClickDiscard()` method no longer exists
+- `forageSystem.addOrDropItems()` no longer accepts `_discardItems` parameter
+- New event system: `onFillSearchIconContextMenu` available for custom menu options
+- Discard **CAN be restored** via mod using event hooks or function overriding
 
 ## Key Development Principles
 

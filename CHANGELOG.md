@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0] - 2025-12-13
+
+### Changed
+- Added compatibility with Build 42.13
+- Restored discard via custom implementation (ported from 42.12)
+
 ## [1.1.0] - 2025-10-27
 
 ### Added

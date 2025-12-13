@@ -1,6 +1,6 @@
 -- Quick Forage Icon Discard Main Client File
 -- Author: ivmakk
--- Version: 1.0.0
+-- Version: 1.2.0
 
 local QFID_Utils = require "QFID_Utils"
 local QFID_ModOptions = require "QFID_ModOptions"

@@ -13,3 +13,9 @@ Added:
 Added:
 - Configurable endurance cost for discard actions (0-100%, default 50%)
 [ ------ ]
+
+[ v1.2.0 - 2025-12-13 ]
+Changed:
+- Added compatibility with Build 42.13
+- Restored discard via custom implementation (ported from 42.12)
+[ ------ ]

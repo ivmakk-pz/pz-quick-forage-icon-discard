@@ -146,7 +146,7 @@ Contents/mods/QuickForageIconDiscard/42/media/lua/client/
 
 ## Current Development Focus: Build 42.13 Compatibility
 
-**Active Branch**: `release/v1.2.0`  
+**Active Branch**: `release/1.2.0`  
 **Target Version**: 1.2.0  
 **Critical Task**: Restore discard functionality removed in Build 42.13
 

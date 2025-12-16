@@ -6,6 +6,8 @@ description=
 description=[h2]Motivation[/h2]
 description=The vanilla foraging context menu looks overwhelming when I only need the discard action. Since foraged items are automatically added to your active container, there's no value in selecting containers through the context menu. I loved the concept of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3571757687]Forage Icon Extension[/url], however I found that interacting with the entire icon is much easier than aiming for a tiny discard button, especially when zoomed out.
 description=
+description=[b]Build 42.13 NOTE:[/b] The vanilla game removed the discard feature in Build 42.13. This mod brings the discard feature back using the implementation from B42.12, making it accessible via mouse button binding (right-click by default).
+description=
 description=[h2]Key Features[/h2]
 description=[list]
 description=[*][b]One-Click Discard[/b]: Discard foraged items instantly with a single mouse button press
@@ -27,7 +29,7 @@ description=[/list]
 description=
 description=[h2]Compatibility[/h2]
 description=[list]
-description=[*]Build 42.12+
+description=[*]Tested on B42.13.0 (SP)
 description=[*]Safe to add/remove mid-game
 description=[*]Recommended with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3507997225]Foraging Tooltip Extended [B42][/url]
 description=[/list]
@@ -39,6 +41,7 @@ description=[*]Dropped items (e.g., twigs or wood splinters after cutting trees,
 description=[/list]
 description=
 description=[h2]Feedback[/h2]
-description=Found a bug or have suggestions? Leave a comment! I'd love to hear your thoughts and improve the mod further.
+description=Found a bug or have suggestions? Leave a comment! I'd love to hear your thoughts and improve the mod further.
+description=[img]https://i.imgur.com/MKy1gMX.gif[/img]
 tags=Build 42;Interface;QoL
 visibility=public

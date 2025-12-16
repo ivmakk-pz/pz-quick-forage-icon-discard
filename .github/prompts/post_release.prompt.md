@@ -3,6 +3,21 @@
 ## Instructions
 This prompt finalizes the release after completing the release preparation. Execute these steps to merge and tag the release.
 
+## Step 0: Check for Uncommitted Changes
+Before starting the merge process, verify there are no uncommitted changes:
+
+1. **Check Git Status**:
+   ```
+   git status
+   ```
+
+2. **If there are uncommitted changes**:
+   - Ask if these changes should be committed to the release branch
+   - If yes: Commit them with appropriate message
+   - If no: Stash or discard as appropriate
+
+3. **Ensure working tree is clean** before proceeding to Step 1
+
 ## Step 1: Complete Git Release Workflow
 Execute the git release workflow after completing the release preparation:
 
@@ -14,10 +29,12 @@ Execute the git release workflow after completing the release preparation:
 
 2. **Create and Push Tag**:
    ```
-   git tag v[VERSION]
+   git tag [VERSION]
    git push origin master
-   git push origin v[VERSION]
+   git push origin [VERSION]
    ```
+   
+   **Note**: Tags use the format `1.2.0` (without "v" prefix) to match existing tag convention.
 
 3. **Clean Up Release Branch**:
    ```

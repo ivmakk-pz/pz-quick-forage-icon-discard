@@ -1,0 +1,9 @@
+name=Quick Forage Icon Discard
+id=Ivmakk_QuickForageIconDiscard
+poster=poster.png
+icon=icon.png
+author=ivmakk
+description=Quick discard by single mouse click (RMB by default) instead of context menu
+modversion=1.2.1
+versionMin=42.12.0
+versionMax=42.12.99

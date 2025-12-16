@@ -26,11 +26,15 @@ This prompt automates the release process for your mod. Execute these steps in o
    - End entry with `[ ------ ]` separator
 
 ## Step 3: Update Version References
-Update version in these files:
+Update version in these files (multi-version support requires updating BOTH version folders):
 
-1. **mod.info**: Update `modversion=` field
-2. **README.md**: Update version badge `![Mod Version](https://img.shields.io/badge/Version-<VERSION>-blue)`
-3. **QFID_Utils.lua**: Update `QFID_Utils.MOD_VERSION` constant
+1. **42.13/mod.info**: Update `modversion=` field (development version)
+2. **42.12/mod.info**: Update `modversion=` field (stable version - MUST match 42.13)
+3. **README.md**: Update version badge `![Mod Version](https://img.shields.io/badge/Version-<VERSION>-blue)`
+4. **42.13/media/lua/client/QFID_Utils.lua**: Update `QFID_Utils.MOD_VERSION` constant
+5. **42.12/media/lua/client/QFID_Utils.lua**: Update `QFID_Utils.MOD_VERSION` constant (MUST match 42.13)
+
+**CRITICAL**: Both `42.13/mod.info` and `42.12/mod.info` MUST have identical `modversion` values
 
 ## Step 4: Validation
 - Verify all files have consistent version numbers

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1] - 2025-12-16
+
+### Added
+- Multi-version support: added support for Build 42.12.x and 42.13+
+- Game automatically loads appropriate version based on player's build
+
 ## [1.2.0] - 2025-12-13
 
 ### Changed

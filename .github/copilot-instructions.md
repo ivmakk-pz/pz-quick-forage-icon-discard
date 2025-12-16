@@ -9,9 +9,20 @@ This is a Project Zomboid mod called "Quick Forage Icon Discard" that allows pla
 This workspace follows the standard Project Zomboid mod structure:
 
 ### Main Development Directory
-- **`Contents/mods/QuickForageIconDiscard/`** - Main code folder where all development work happens
-  - Contains all mod files, scripts, and resources
-  - This is where you implement features, fixes, and enhancements for your mod
+- **`Contents/mods/QuickForageIconDiscard/`** - Main code folder with multi-version support:
+  - **`42.13/`** - Active development folder for Build 42.13+ (unstable/beta)
+    - All new features and changes go here
+    - Contains restored discard functionality using custom implementation
+    - Uses `versionMin=42.13` with no `versionMax` to support all future 42.13.x builds
+  - **`42.12/`** - Stable version folder for Build 42.12.x
+    - Legacy support for stable builds
+    - Contains original implementation (uses vanilla discard)
+    - Uses `versionMin=42.12.0` and `versionMax=42.12.99` to lock to 42.12.x builds
+    - Only modify for critical backported fixes
+  - **`common/`** - Shared assets folder (required even if empty)
+    - Contains ChangeLog.txt and other cross-version resources
+  - **CRITICAL**: Both `42.13/mod.info` and `42.12/mod.info` must have IDENTICAL `modversion` values
+  - Game automatically loads the appropriate version folder based on player's build
 
 ### Reference Directory
 - **`Mods_Refs/`** - Reference mods for learning patterns and implementations
@@ -118,15 +129,20 @@ For implementing complex features or systems, consider using a modular architect
 
 ### Suggested Structure for Complex Mods
 ```
-Contents/mods/QuickForageIconDiscard/42/media/lua/client/
-├── QFID_Client.lua          # Main coordinator
-├── Core/
-│   └── QFID_ModuleBase.lua  # Base module class
-├── Modules/
-│   ├── QFID_Feature1.lua    # Individual feature modules
-│   └── QFID_Feature2.lua
-└── Utils/
-    └── QFID_Utils.lua       # Shared utilities
+Contents/mods/QuickForageIconDiscard/
+├── 42.13/                   # Development version (Build 42.13+)
+│   └── media/lua/client/
+│       ├── QFID_Client.lua          # Main coordinator
+│       ├── Core/
+│       │   └── QFID_ModuleBase.lua  # Base module class
+│       ├── Modules/
+│       │   ├── QFID_Feature1.lua    # Individual feature modules
+│       │   └── QFID_Feature2.lua
+│       └── Utils/
+│           └── QFID_Utils.lua       # Shared utilities
+├── 42.12/                   # Stable version (Build 42.12.x)
+│   └── media/lua/client/    # Mirror of 42.13/ structure
+└── common/                  # Shared assets (ChangeLog.txt, etc.)
 ```
 
 ### Benefits of Modular Approach
@@ -140,15 +156,20 @@ Contents/mods/QuickForageIconDiscard/42/media/lua/client/
 - **Primary Language**: Lua 5.1 (Project Zomboid's Lua environment)
 - **Target Platform**: Project Zomboid (Steam Workshop mod)
 - **Mod Framework**: Project Zomboid's mod system
-- **File Structure**: Standard PZ mod structure with `media/lua/` directories
-- **Current Target Build**: Build 42.13.0+ (as of version 1.2.0)
-- **Legacy Support**: Build 42.12.3 (version 1.1.0)
+- **File Structure**: Multi-version PZ mod structure with version-specific folders
+- **Supported Builds**:
+  - Build 42.13+ (42.13/ folder) - Active development with custom discard implementation
+  - Build 42.12.x (42.12/ folder) - Stable support with vanilla discard
+- **Current Version**: 1.2.1 (synchronized across both build versions)
 
-## Current Development Focus: Build 42.13 Compatibility
+## Current Development Focus: Multi-Version Support
 
-**Active Branch**: `release/1.2.0`  
-**Target Version**: 1.2.0  
-**Critical Task**: Restore discard functionality removed in Build 42.13
+**Active Branch**: `release/1.2.1`  
+**Target Version**: 1.2.1  
+**Status**: Multi-version support implemented
+  - **42.13/**: Development version with restored discard functionality
+  - **42.12/**: Stable version with original vanilla discard
+  - Both versions properly configured for automatic game detection
 
 ### Required Reading for B42.13 Update
 1. **`.github/instructions/b42.13_compatibility.instructions.md`** - Complete implementation guide

@@ -6,7 +6,10 @@ applyTo: '**/Translate/**/*_*.txt'
 
 ## File Structure and Naming
 - Follow Project Zomboid's standard: `Translate/{language}/{File}_{language}.txt`
-- Create files in: `Contents/mods/QuickForageIconDiscard/42/media/lua/shared/Translate/{LANGUAGE}/`
+- Create files in both version folders:
+  - `Contents/mods/QuickForageIconDiscard/42.13/media/lua/shared/Translate/{LANGUAGE}/` (development)
+  - `Contents/mods/QuickForageIconDiscard/42.12/media/lua/shared/Translate/{LANGUAGE}/` (stable)
+- Keep translation files synchronized between both versions
 - Required files: `IG_UI_{LANGUAGE}.txt` and `UI_{LANGUAGE}.txt`
 
 ## Supported Language Codes (Build 42)
@@ -123,5 +126,6 @@ UI_QFID_DE = {
 
 ## Reference Files
 Use these English files as translation base:
-- `Contents/mods/ProjectCookExtensionNutrientsSorting/42/media/lua/shared/Translate/EN/IG_UI_EN.txt`
-- `Contents/mods/ProjectCookExtensionNutrientsSorting/42/media/lua/shared/Translate/EN/UI_EN.txt`
+- `Contents/mods/ProjectCookExtensionNutrientsSorting/42.13/media/lua/shared/Translate/EN/IG_UI_EN.txt`
+- `Contents/mods/ProjectCookExtensionNutrientsSorting/42.13/media/lua/shared/Translate/EN/UI_EN.txt`
+- (Same files exist in 42.12/ folder)

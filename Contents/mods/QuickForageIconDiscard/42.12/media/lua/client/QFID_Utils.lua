@@ -4,7 +4,7 @@
 local QFID_Utils = {}
 
 -- Mod version - Update this during release process
-QFID_Utils.MOD_VERSION = "1.2.0"
+QFID_Utils.MOD_VERSION = "1.2.1"
 
 -- Mouse button constants
 QFID_Utils.BUTTON_NONE = -1  -- Special value indicating no button assigned

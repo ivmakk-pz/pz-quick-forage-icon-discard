@@ -1,6 +1,6 @@
 # Quick Forage Icon Discard
 
-![Mod Version](https://img.shields.io/badge/Version-1.2.0-blue)
+![Mod Version](https://img.shields.io/badge/Version-1.2.1-blue)
 
 A Project Zomboid mod for Build 42.
 
@@ -41,7 +41,11 @@ The mod uses the following mouse button event handlers:
 
 ## Requirements
 
-- Project Zomboid Build 42.9+
+This mod supports multiple game versions:
+- **Build 42.13+** (unstable/beta) - Latest features with restored discard functionality
+- **Build 42.12.x** (stable) - Legacy support
+
+The game automatically loads the appropriate version based on your game build.
 
 ## Usage
 

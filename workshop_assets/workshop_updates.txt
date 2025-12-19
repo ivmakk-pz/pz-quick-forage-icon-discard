@@ -3,8 +3,10 @@
 v1.2.1 - 2025-12-16
 
 Added:
-- Multi-version support: added support for Build 42.12.x and 42.13+
-- Game automatically loads appropriate version based on player's build
+- Multi-version support: added back support for Build 42.12.3 (and future 42.12.x versions) with separate support for Build 42.13+ builds
+
+Changed:
+- Default exhaustion penalty multiplier set to 0% for Build 42.13+ (discard is now cosmetic rather than XP source as it was in 42.12)
 
 v1.2.0 - 2025-12-13
 

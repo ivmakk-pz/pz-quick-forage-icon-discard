@@ -49,7 +49,7 @@ function QFID_ModOptions.getDiscardEnduranceModifier()
     if QFID_ModOptions.discardEnduranceModifierOption then
         return QFID_ModOptions.discardEnduranceModifierOption:getValue()
     else
-        return 0.5  -- Default 50% when not initialized
+        return 0  -- Default 0 when not initialized
     end
 end
 

@@ -24,12 +24,12 @@ description=[list]
 description=[*][b]Discard Button[/b]: Choose which mouse button performs quick discard (Default: Right Mouse Button)
 description=[*][b]Context Menu Button[/b]: Choose which mouse button opens the context menu (Default: Middle Mouse Button)
 description=[*][b]Show Item Tooltip[/b]: Toggle item name tooltips when hovering over forage icons (Default: Enabled)
-description=[*][b]Discard Endurance Penalty[/b]: Adjust endurance cost, 0-100% (Default: 50%). Discarding shouldn't cost as much as picking up. Vanilla uses 100% (-1.5% endurance per action)
+description=[*][b]Discard Endurance Penalty[/b]: Adjust endurance cost, 0-100% (Default: 50% for B42.12, 0% for B42.13). Discarding shouldn't cost as much as picking up. Vanilla uses 100% on B42.12 (-1.5% endurance per action)
 description=[/list]
 description=
 description=[h2]Compatibility[/h2]
 description=[list]
-description=[*]Tested on B42.13.0 (SP)
+description=[*]Supported builds: 42.12.x, 42.13+ (tested on SP)
 description=[*]Safe to add/remove mid-game
 description=[*]Recommended with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3507997225]Foraging Tooltip Extended [B42][/url]
 description=[/list]

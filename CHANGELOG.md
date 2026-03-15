@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0] - 2026-03-15
+
+### Changed
+- Updated for Build 42.15 compatibility: translation files converted from Lua .txt format to .json
+
 ## [1.2.1] - 2025-12-16
 
 ### Added

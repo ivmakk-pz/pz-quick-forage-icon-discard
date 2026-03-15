@@ -1,6 +1,6 @@
 # Quick Forage Icon Discard
 
-![Mod Version](https://img.shields.io/badge/Version-1.2.1-blue)
+![Mod Version](https://img.shields.io/badge/Version-1.3.0-blue)
 
 A Project Zomboid mod for Build 42.
 

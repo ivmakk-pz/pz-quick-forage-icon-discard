@@ -27,3 +27,8 @@ Added:
 Changed:
 - B42.13: Default exhaustion penalty multiplier set to 0% (discard is now cosmetic rather than XP source as it was in 42.12)
 [ ------ ]
+
+[ v1.3.0 - 2026-03-15 ]
+Changed:
+- Updated for Build 42.15 compatibility: translation files converted from Lua .txt format to .json
+[ ------ ]

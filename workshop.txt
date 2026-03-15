@@ -29,7 +29,7 @@ description=[/list]
 description=
 description=[h2]Compatibility[/h2]
 description=[list]
-description=[*]Supported builds: 42.12.x, 42.15.x (tested on SP)
+description=[*]Supported builds: 42.12.x, 42.14.x, 42.15.x (tested on SP)
 description=[*]Safe to add/remove mid-game
 description=[*]Recommended with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3507997225]Foraging Tooltip Extended [B42][/url]
 description=[/list]

@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.1] - 2026-03-15
+
+### Changed
+- Updated for Build 42.14 compatibility: increased versionMax
+
 ## [1.3.0] - 2026-03-15
 
 ### Changed

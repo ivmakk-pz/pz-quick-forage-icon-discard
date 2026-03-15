@@ -32,3 +32,8 @@ Changed:
 Changed:
 - Updated for Build 42.15 compatibility: translation files converted from Lua .txt format to .json
 [ ------ ]
+
+[ v1.3.1 - 2026-03-15 ]
+Changed:
+- Updated for Build 42.14 compatibility: increased versionMax
+[ ------ ]

@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "Bouton d'ignorer",
+    "UI_options_QFID_contextMenuButton": "Bouton de menu contextuel",
+    "UI_options_QFID_showTooltip": "Afficher l'infobulle de l'objet",
+    "UI_options_QFID_button_RMB": "Bouton droit de la souris",
+    "UI_options_QFID_button_RMB_default": "Bouton droit de la souris",
+    "UI_options_QFID_button_MMB": "Bouton central de la souris",
+    "UI_options_QFID_button_MB_template": "Bouton de souris %1"
+}

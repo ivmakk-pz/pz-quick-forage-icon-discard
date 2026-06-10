@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "Atma Düğmesi",
+    "UI_options_QFID_contextMenuButton": "Bağlam Menüsü Düğmesi",
+    "UI_options_QFID_showTooltip": "Öğe İpucunu Göster",
+    "UI_options_QFID_button_RMB": "Sağ Fare Düğmesi",
+    "UI_options_QFID_button_RMB_default": "Sağ Fare Düğmesi",
+    "UI_options_QFID_button_MMB": "Orta Fare Düğmesi",
+    "UI_options_QFID_button_MB_template": "Fare Düğmesi %1"
+}

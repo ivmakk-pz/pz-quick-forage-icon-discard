@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.4.0] - 2026-06-10
+
+### Changed
+- Dropped legacy Build 42.12–42.14 support folders; the mod now ships a single folder targeting Build 42.15 and newer.
+
+### Removed
+- Discard endurance penalty option — it never functioned on Build 42.13+ and caused a foraging crash on recent builds.
+
+### Fixed
+- Crash when an item is found while foraging on Build 42.18+ (the removed endurance feature called a game API that no longer exists).
+
 ## [1.3.1] - 2026-03-15
 
 ### Changed

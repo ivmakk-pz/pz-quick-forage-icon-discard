@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "Ignorieren-Taste",
+    "UI_options_QFID_contextMenuButton": "Kontextmenü-Taste",
+    "UI_options_QFID_showTooltip": "Gegenstands-Tooltip anzeigen",
+    "UI_options_QFID_button_RMB": "Rechte Maustaste",
+    "UI_options_QFID_button_RMB_default": "Rechte Maustaste",
+    "UI_options_QFID_button_MMB": "Mittlere Maustaste",
+    "UI_options_QFID_button_MB_template": "Maustaste %1"
+}

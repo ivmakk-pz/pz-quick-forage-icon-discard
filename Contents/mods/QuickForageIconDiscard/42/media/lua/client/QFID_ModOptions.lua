@@ -10,7 +10,6 @@ local QFID_ModOptions = {
     discardButtonOption = nil,
     contextMenuButtonOption = nil,
     showTooltipOption = nil,
-    discardEnduranceModifierOption = nil,
 }
 
 -- ===================================================================================================== --
@@ -40,16 +39,6 @@ function QFID_ModOptions.getShowTooltip()
         return QFID_ModOptions.showTooltipOption:getValue()
     else
         return true  -- Default enabled when not initialized
-    end
-end
-
----Get the discard endurance modifier (0.0 = no cost, 1.0 = full vanilla cost)
----@return number modifier Multiplier for endurance penalty on discard (0.0 to 1.0)
-function QFID_ModOptions.getDiscardEnduranceModifier()
-    if QFID_ModOptions.discardEnduranceModifierOption then
-        return QFID_ModOptions.discardEnduranceModifierOption:getValue()
-    else
-        return 0.5  -- Default 50% when not initialized
     end
 end
 
@@ -98,20 +87,7 @@ function QFID_ModOptions.initialize()
         getText("UI_options_QFID_showTooltip"),
         true  -- Default enabled
     )
-    
-    -- Discard endurance modifier description
-    options:addDescription(getText("UI_options_QFID_discardEnduranceModifier_tooltip"))
-    
-    -- Discard endurance modifier option
-    QFID_ModOptions.discardEnduranceModifierOption = options:addSlider(
-        "discardEnduranceModifier",
-        getText("UI_options_QFID_discardEnduranceModifier"),
-        0.0,   -- min
-        1.0,   -- max
-        0.05,  -- step
-        0.5    -- default (50%)
-    )
-    
+
     QFID_Utils.logInfo("Mod options initialized successfully")
 end
 

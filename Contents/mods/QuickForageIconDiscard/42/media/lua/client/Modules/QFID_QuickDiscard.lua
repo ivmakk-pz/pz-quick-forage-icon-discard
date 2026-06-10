@@ -15,6 +15,47 @@ local QFID_QuickDiscard = QFID_ModuleBase:derive("QFID_QuickDiscard")
 local instance = QFID_QuickDiscard:new()
 
 -- ===================================================================================================== --
+-- CUSTOM DISCARD IMPLEMENTATION (B42.13 COMPATIBILITY)
+-- ===================================================================================================== --
+
+---Custom discard implementation for Build 42.13 (vanilla onClickDiscard removed)
+---Removes the forage icon from display and marks it as discarded in zone data
+---@param icon ISForageIcon The forage icon to discard
+---@param x number Mouse X coordinate (unused, kept for API compatibility)
+---@param y number Mouse Y coordinate (unused, kept for API compatibility)
+---@param contextOption any Context menu option (optional, will hide if provided)
+local function QFID_customDiscardIcon(icon, x, y, contextOption)
+    -- Hide context menu if provided
+    if contextOption then 
+        contextOption:hideAndChildren() 
+    end
+    
+    -- Validate icon has required data
+    if not icon or not icon.iconID then
+        QFID_Utils.logDebug("[B42.13] Cannot discard - invalid icon object")
+        return
+    end
+    
+    -- Flag icon for removal (prevents race conditions)
+    if icon.setIsBeingRemoved then
+        icon:setIsBeingRemoved(true)
+    end
+    
+    -- Remove from zone data and update clients (handles multiplayer sync)
+    if icon.manager then
+        -- removeItem handles zone data updates via forageSystem and forageClient
+        icon.manager:removeItem(icon)
+        -- removeIcon removes from UI and internal tracking
+        icon.manager:removeIcon(icon)
+    else
+        QFID_Utils.logWarning("[B42.13] Icon has no manager reference: " .. tostring(icon.iconID))
+    end
+    
+    -- Trigger update event for other listeners (multiplayer sync)
+    triggerEvent("onUpdateIcon", icon.zoneData, icon.iconID, nil)
+end
+
+-- ===================================================================================================== --
 -- ISFORAGEICON OVERRIDE FUNCTIONS
 -- ===================================================================================================== --
 
@@ -32,7 +73,7 @@ local function ISForageIcon_onRightMouseDown(self, x, y)
         
         -- Priority: Discard takes priority if both use RMB
         if discardButton == Mouse.RMB then
-            self:onClickDiscard(x, y, nil)
+            QFID_customDiscardIcon(self, x, y, nil)
             return true
         -- RMB is context menu button (only if not also discard button)
         elseif contextMenuButton == Mouse.RMB then
@@ -84,7 +125,7 @@ local function ISForageIcon_onMouseButtonDown(self, btn)
 
         -- Priority: Discard takes priority if both use same button
         if discardButton ~= QFID_Utils.BUTTON_NONE and buttonCode == discardButton then
-            self:onClickDiscard(0, 0, nil)
+            QFID_customDiscardIcon(self, 0, 0, nil)
         -- Check if this button is context menu button (only if not also discard button)
         elseif buttonCode == contextMenuButton then
             self:doContextMenu()

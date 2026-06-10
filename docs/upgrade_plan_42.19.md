@@ -112,8 +112,8 @@ Do this in the `42.15/` folder content (which carries forward in Phase 2); the `
 - [x] Update the `README.md` version badge to 1.4.0
 - [x] Update all three changelogs (`CHANGELOG.md`, `workshop_assets/workshop_updates.txt`, `common/ChangeLog.txt`) — Removed: endurance modifier; Fixed: foraging crash on 42.18+; Changed: dropped legacy multi-version folders
 - [x] Updated `workshop_description.bbcode` (dropped endurance feature/option, builds → 42.15+)
-- [ ] Commit the prepared release on `release/1.4.0` (only when the user asks)
-- [ ] Finalize: merge to `master`, tag `1.4.0` (no `v` prefix), push, delete branch (only when the user asks)
+- [x] Commit release on `release/1.4.0` (`121621b`), push, open PR #3 → master
+- [ ] Finalize: merge PR #3, tag `1.4.0` (no `v` prefix) on master, push tag, delete branch
 
 ### 6. Verify
 

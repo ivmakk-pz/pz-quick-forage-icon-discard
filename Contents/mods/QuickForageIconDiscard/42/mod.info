@@ -3,6 +3,6 @@ id=Ivmakk_QuickForageIconDiscard
 poster=poster.png
 icon=icon.png
 author=ivmakk
-description=Quick discard by single mouse click (RMB by default) instead of context menu. Restores the discard feature (removed by vanilla in 42.13) for Build 42.15+.
+description=Quick discard by single mouse click (RMB by default) instead of context menu.
 modversion=1.4.0
 versionMin=42.15

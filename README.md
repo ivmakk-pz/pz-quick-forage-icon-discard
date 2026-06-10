@@ -41,11 +41,9 @@ The mod uses the following mouse button event handlers:
 
 ## Requirements
 
-This mod supports multiple game versions:
-- **Build 42.13+** (unstable/beta) - Latest features with restored discard functionality
-- **Build 42.12.x** (stable) - Legacy support
+- **Build 42.15+** — restores the discard feature removed by vanilla in Build 42.13.
 
-The game automatically loads the appropriate version based on your game build.
+Older builds (42.12–42.14) are no longer supported as of 1.4.0; use an earlier mod release for those.
 
 ## Usage
 

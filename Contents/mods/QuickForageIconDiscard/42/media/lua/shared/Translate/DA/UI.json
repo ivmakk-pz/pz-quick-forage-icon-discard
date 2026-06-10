@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "Kassér knap",
+    "UI_options_QFID_contextMenuButton": "Kontekstmenu knap",
+    "UI_options_QFID_showTooltip": "Vis genstandsværktøjstip",
+    "UI_options_QFID_button_RMB": "Højre museknap",
+    "UI_options_QFID_button_RMB_default": "Højre museknap",
+    "UI_options_QFID_button_MMB": "Midterste museknap",
+    "UI_options_QFID_button_MB_template": "Museknap %1"
+}

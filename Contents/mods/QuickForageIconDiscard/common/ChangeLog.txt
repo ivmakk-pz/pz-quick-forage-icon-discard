@@ -37,3 +37,12 @@ Changed:
 Changed:
 - Updated for Build 42.14 compatibility: increased versionMax
 [ ------ ]
+
+[ v1.4.0 - 2026-06-10 ]
+Changed:
+- Dropped legacy Build 42.12-42.14 folders; now targets Build 42.15+.
+Removed:
+- Discard endurance penalty option (never worked on 42.13+, caused a crash).
+Fixed:
+- Crash when foraging on Build 42.18+.
+[ ------ ]

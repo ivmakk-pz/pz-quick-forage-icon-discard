@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "Botão de descarte",
+    "UI_options_QFID_contextMenuButton": "Botão de menu contextual",
+    "UI_options_QFID_showTooltip": "Mostrar dica de item",
+    "UI_options_QFID_button_RMB": "Botão direito do mouse",
+    "UI_options_QFID_button_RMB_default": "Botão direito do mouse",
+    "UI_options_QFID_button_MMB": "Botão do meio do mouse",
+    "UI_options_QFID_button_MB_template": "Botão do mouse %1"
+}

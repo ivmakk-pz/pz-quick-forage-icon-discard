@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "Pulsante di scarto",
+    "UI_options_QFID_contextMenuButton": "Pulsante menu contestuale",
+    "UI_options_QFID_showTooltip": "Mostra descrizione oggetto",
+    "UI_options_QFID_button_RMB": "Tasto destro del mouse",
+    "UI_options_QFID_button_RMB_default": "Tasto destro del mouse",
+    "UI_options_QFID_button_MMB": "Tasto centrale del mouse",
+    "UI_options_QFID_button_MB_template": "Pulsante mouse %1"
+}

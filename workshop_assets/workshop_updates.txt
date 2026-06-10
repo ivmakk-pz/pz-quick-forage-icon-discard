@@ -1,5 +1,16 @@
 # Workshop Update History
 
+v1.4.0 - 2026-06-10
+
+Changed:
+- Dropped legacy Build 42.12-42.14 support; the mod now targets Build 42.15 and newer.
+
+Removed:
+- Discard endurance penalty option (it never worked on 42.13+ and caused a crash).
+
+Fixed:
+- Crash when an item is found while foraging on Build 42.18+.
+
 v1.3.1 - 2026-03-15
 
 Changed:

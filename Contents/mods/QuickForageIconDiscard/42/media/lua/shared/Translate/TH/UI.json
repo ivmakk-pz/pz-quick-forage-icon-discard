@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "ปุ่มทำลาย",
+    "UI_options_QFID_contextMenuButton": "ปุ่มเมนูบริบท",
+    "UI_options_QFID_showTooltip": "แสดงคำแนะนำเครื่องมือของไอเทม",
+    "UI_options_QFID_button_RMB": "ปุ่มเมาส์ขวา",
+    "UI_options_QFID_button_RMB_default": "ปุ่มเมาส์ขวา",
+    "UI_options_QFID_button_MMB": "ปุ่มเมาส์กลาง",
+    "UI_options_QFID_button_MB_template": "ปุ่มเมาส์ %1"
+}

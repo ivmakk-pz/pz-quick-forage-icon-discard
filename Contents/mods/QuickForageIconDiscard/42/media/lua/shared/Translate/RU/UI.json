@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "Кнопка отказа",
+    "UI_options_QFID_contextMenuButton": "Кнопка контекстного меню",
+    "UI_options_QFID_showTooltip": "Показать подсказку предмета",
+    "UI_options_QFID_button_RMB": "Правая кнопка мыши",
+    "UI_options_QFID_button_RMB_default": "Правая кнопка мыши",
+    "UI_options_QFID_button_MMB": "Средняя кнопка мыши",
+    "UI_options_QFID_button_MB_template": "Кнопка мыши %1"
+}

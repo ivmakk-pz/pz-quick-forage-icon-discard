@@ -13,7 +13,6 @@ local QFID_Utils = require("QFID_Utils")
 ---@field __destroying boolean
 ---@field crashCount number
 ---@field isBlacklisted boolean
----@field eventHandlers table<string, boolean>   -- key: event|handler_ptr
 ---@field vanillaOverrides table<string, { target: table, original: function }>
 local QFID_ModuleBase = ISBaseObject:derive("QFID_ModuleBase")
 
@@ -40,8 +39,7 @@ function QFID_ModuleBase:derive(className)
         
         o.crashCount       = 0
         o.isBlacklisted    = false
-        
-        o.eventHandlers    = {}
+
         o.vanillaOverrides = {}
         
         return o
@@ -60,14 +58,6 @@ end
 ---@return string key Unique key in format "table:0x123456::functionName"
 local function _ovKey(target, fname)
     return tostring(target) .. "::" .. fname
-end
-
----Generate unique key for event handler deduplication
----@param eventName string The name of the event being registered
----@param fn function The handler function being registered
----@return string key Unique key in format "EventName::function:0x123456"
-local function _ehKey(eventName, fn)
-    return eventName .. "::" .. tostring(fn)
 end
 
 -- ===================================================================================================== --
@@ -119,15 +109,6 @@ function QFID_ModuleBase:destroy()
     end
     self.__destroying = true
 
-    -- Remove events (reverse order for safer cleanup)
-    for key,_ in pairs(self.eventHandlers) do
-        local i = key:find("::", 1, true)
-        local eventName = key:sub(1, i-1)
-        local handlerPtr = key:sub(i+2)
-        pcall(function() Events[eventName].Remove(loadstring("return "..handlerPtr)() or handlerPtr) end)
-    end
-    self.eventHandlers = {}
-
     -- Restore vanilla functions (cleanup in reverse order)
     for k, data in pairs(self.vanillaOverrides) do
         pcall(function() data.target[k:match("::(.+)$")] = data.original end)
@@ -157,36 +138,8 @@ function QFID_ModuleBase:getCrashCount()
 end
 
 -- ===================================================================================================== --
--- EVENT AND OVERRIDE MANAGEMENT METHODS  
+-- OVERRIDE MANAGEMENT METHODS
 -- ===================================================================================================== --
-
----Register event handler with deduplication and error wrapping
----@param eventName string
----@param handler function
----@return boolean success
-function QFID_ModuleBase:registerEvent(eventName, handler)
-    if type(handler) ~= "function" then return false end
-    local key = _ehKey(eventName, handler)
-    if self.eventHandlers[key] then return true end
-
-    local function safeHandler(...)
-        local ok, res = pcall(handler, ...)
-        if not ok then
-            QFID_Utils.logError(self.moduleName .. " event '"..eventName.."' failed: "..tostring(res))
-        end
-        return res
-    end
-
-    local ok, err = pcall(function() Events[eventName].Add(safeHandler) end)
-    if ok then
-        -- Store wrapper pointer for reliable removal
-        self.eventHandlers[_ehKey(eventName, safeHandler)] = true
-        return true
-    else
-        QFID_Utils.logError(self.moduleName .. " failed to register "..eventName..": "..tostring(err))
-        return false
-    end
-end
 
 ---Override vanilla function with idempotent wrapping and enhanced auto-restore on crash
 ---@param targetObject table

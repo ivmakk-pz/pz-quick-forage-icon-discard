@@ -1,0 +1,9 @@
+{
+    "UI_options_QFID_discardButton": "Botรณn de desechar",
+    "UI_options_QFID_contextMenuButton": "Botรณn de menรบ contextual",
+    "UI_options_QFID_showTooltip": "Mostrar informaciรณn del objeto",
+    "UI_options_QFID_button_RMB": "Botรณn derecho del ratรณn",
+    "UI_options_QFID_button_RMB_default": "Botรณn derecho del ratรณn",
+    "UI_options_QFID_button_MMB": "Botรณn central del ratรณn",
+    "UI_options_QFID_button_MB_template": "Botรณn del ratรณn %1"
+}

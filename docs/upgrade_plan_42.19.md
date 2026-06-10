@@ -113,7 +113,7 @@ Do this in the `42.15/` folder content (which carries forward in Phase 2); the `
 - [x] Update all three changelogs (`CHANGELOG.md`, `workshop_assets/workshop_updates.txt`, `common/ChangeLog.txt`) — Removed: endurance modifier; Fixed: foraging crash on 42.18+; Changed: dropped legacy multi-version folders
 - [x] Updated `workshop_description.bbcode` (dropped endurance feature/option, builds → 42.15+)
 - [x] Commit release on `release/1.4.0` (`121621b`), push, open PR #3 → master
-- [ ] Finalize: merge PR #3, tag `1.4.0` (no `v` prefix) on master, push tag, delete branch
+- [x] Finalize: PR #3 merged (`1a78bc3`), tag `1.4.0` pushed, branch deleted, workshop deployed
 
 ### 6. Verify
 

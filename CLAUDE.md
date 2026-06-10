@@ -68,6 +68,4 @@ A version bump touches several files in lockstep: `modversion` in `mod.info`, `M
 ## Reference material
 
 - `docs/pz_reference.md` — project lookup notes: `mod.info` format, the `PZAPI.ModOptions` API + option conventions, and Steam Workshop BBCode syntax.
-- `docs/` (other files) — Build 42.13 migration notes, vanilla foraging API notes, and the discard/mouse-button implementation guides from the 42.13 port.
-- `Mods_Refs/` — other mods (e.g. `MilkThemAll/`) kept as read-only pattern references; gitignored, do not modify.
-- `PZ_files/` (Build 42.13) and `PZ_files_backup_B42_12/` (Build 42.12.3) — unpacked vanilla game source, read-only, gitignored. Compare the two to see what changed between builds (e.g. `ISForageIcon.onClickDiscard` and `forageSystem.addOrDropItems(_discardItems)` existed in 42.12 but were removed in 42.13 — the gap this mod fills).
+- Vanilla game source, decompiled Java, release notes, PZwiki references, and migration guides live in the shared context repo wired up by the **`pz-modding`** skill — read from there instead of keeping local copies. The discard gap this mod fills: `ISForageIcon.onClickDiscard` and `forageSystem.addOrDropItems(_discardItems)` existed in 42.12 but were removed in 42.13.

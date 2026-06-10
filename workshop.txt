@@ -1,7 +1,7 @@
 version=1
 id=3593442524
 title=Quick Forage Icon Discard [B42]
-description=One-click discard for foraged items with adjustable endurance cost - faster foraging without rapid exhaustion.
+description=One-click discard for foraged items - faster foraging without the context menu.
 description=
 description=[h2]Motivation[/h2]
 description=The vanilla foraging context menu looks overwhelming when I only need the discard action. Since foraged items are automatically added to your active container, there's no value in selecting containers through the context menu. I loved the concept of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3571757687]Forage Icon Extension[/url], however I found that interacting with the entire icon is much easier than aiming for a tiny discard button, especially when zoomed out.
@@ -12,7 +12,6 @@ description=[h2]Key Features[/h2]
 description=[list]
 description=[*][b]One-Click Discard[/b]: Discard foraged items instantly with a single mouse button press
 description=[*][b]Context Menu Still Available[/b]: Reassign context menu to a different mouse button or fully disable it
-description=[*][b]Adjustable Endurance Cost[/b]: Customize the endurance penalty for discarding items
 description=[*][b]Translations[/b]: CN, DA, DE, EN, ES, FR, HU, IT, JP, KO, PL, PTBR, RU, TH, TR, UA
 description=[/list]
 description=
@@ -24,12 +23,11 @@ description=[list]
 description=[*][b]Discard Button[/b]: Choose which mouse button performs quick discard (Default: Right Mouse Button)
 description=[*][b]Context Menu Button[/b]: Choose which mouse button opens the context menu (Default: Middle Mouse Button)
 description=[*][b]Show Item Tooltip[/b]: Toggle item name tooltips when hovering over forage icons (Default: Enabled)
-description=[*][b]Discard Endurance Penalty[/b]: Adjust endurance cost, 0-100% (Default: 50% for B42.12, 0% for B42.13). Discarding shouldn't cost as much as picking up. Vanilla uses 100% on B42.12 (-1.5% endurance per action)
 description=[/list]
 description=
 description=[h2]Compatibility[/h2]
 description=[list]
-description=[*]Supported builds: 42.12.x, 42.14.x, 42.15.x (tested on SP)
+description=[*]Supported builds: 42.15+ (tested on 42.19.0 SP)
 description=[*]Safe to add/remove mid-game
 description=[*]Recommended with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3507997225]Foraging Tooltip Extended [B42][/url]
 description=[/list]

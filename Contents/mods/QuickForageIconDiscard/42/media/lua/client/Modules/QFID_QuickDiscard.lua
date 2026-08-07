@@ -183,9 +183,13 @@ end
 ---@param icons table<string, table>|nil Server-supplied icon pool, keyed by icon id
 local function ISSearchManager_applyServerPool(self, zoneId, icons)
     if icons then
-        for iconID in pairs(QFID_discardedIconIds) do
-            -- Safe to mutate: icons is a per-call table decoded from the pool packet
-            icons[iconID] = nil
+        -- Iterate the (bounded) incoming pool, not the session-wide discard set which
+        -- grows with every discard. Clearing the current key mid-traversal is allowed in Lua 5.1.
+        -- Safe to mutate: icons is a per-call table decoded from the pool packet.
+        for iconID in pairs(icons) do
+            if QFID_discardedIconIds[iconID] then
+                icons[iconID] = nil
+            end
         end
     end
 

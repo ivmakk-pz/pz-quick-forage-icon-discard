@@ -2,10 +2,24 @@
 -- Implements quick discard on RMB and context menu on middle mouse button
 
 require "Foraging/ISForageIcon"
+require "Foraging/ISSearchManager"
 
 local QFID_Utils = require("QFID_Utils")
 local QFID_ModOptions = require("QFID_ModOptions")
 local QFID_ModuleBase = require("Core/QFID_ModuleBase")
+
+-- ===================================================================================================== --
+-- MULTIPLAYER DISCARD STATE
+-- ===================================================================================================== --
+
+-- 42.20 made foraging server-authoritative: the client polls the server every ~2s and
+-- ISSearchManager:applyServerPool re-materialises any icon id missing from self.forageIcons.
+-- A client-side discard never reaches the server pool, so the icon reappears within ~2s.
+-- Track ids we discarded this session and suppress them in an applyServerPool override.
+-- Keys are getRandomUUID() icon ids, so this is a small session-local set (cleared on game
+-- restart) that never needs pruning - reuse/collision does not happen.
+---@type table<string, true>
+local QFID_discardedIconIds = {}
 
 -- ===================================================================================================== --
 -- MODULE SETUP USING QFID_ModuleBase PATTERN
@@ -15,10 +29,10 @@ local QFID_QuickDiscard = QFID_ModuleBase:derive("QFID_QuickDiscard")
 local instance = QFID_QuickDiscard:new()
 
 -- ===================================================================================================== --
--- CUSTOM DISCARD IMPLEMENTATION (B42.13 COMPATIBILITY)
+-- CUSTOM DISCARD IMPLEMENTATION
 -- ===================================================================================================== --
 
----Custom discard implementation for Build 42.13 (vanilla onClickDiscard removed)
+---Custom discard implementation (vanilla onClickDiscard was removed in Build 42.13)
 ---Removes the forage icon from display and marks it as discarded in zone data
 ---@param icon ISForageIcon The forage icon to discard
 ---@param x number Mouse X coordinate (unused, kept for API compatibility)
@@ -32,7 +46,7 @@ local function QFID_customDiscardIcon(icon, x, y, contextOption)
     
     -- Validate icon has required data
     if not icon or not icon.iconID then
-        QFID_Utils.logDebug("[B42.13] Cannot discard - invalid icon object")
+        QFID_Utils.logDebug("Cannot discard - invalid icon object")
         return
     end
     
@@ -47,8 +61,13 @@ local function QFID_customDiscardIcon(icon, x, y, contextOption)
         icon.manager:removeItem(icon)
         -- removeIcon removes from UI and internal tracking
         icon.manager:removeIcon(icon)
+        -- Remember it so the 42.20 server pool can't re-materialise it (see applyServerPool
+        -- override). Only MP clients run applyServerPool, so there is nothing to track in SP.
+        if isClient() then
+            QFID_discardedIconIds[icon.iconID] = true
+        end
     else
-        QFID_Utils.logWarning("[B42.13] Icon has no manager reference: " .. tostring(icon.iconID))
+        QFID_Utils.logWarning("Icon has no manager reference: " .. tostring(icon.iconID))
     end
     
     -- Trigger update event for other listeners (multiplayer sync)
@@ -158,6 +177,31 @@ local function ISForageIcon_initialise(self)
     end
 end
 
+---Suppress server-pool re-materialisation of icons discarded this session (42.20+ MP)
+---Vanilla applyServerPool recreates any icon id not in self.forageIcons; strip our
+---discarded ids from the incoming pool before the original runs. Only exists on 42.20+;
+---on older builds the override is skipped because the vanilla function is absent.
+---@param self ISSearchManager
+---@param zoneId unknown Zone id (passed through unchanged)
+---@param icons table<string, table>|nil Server-supplied icon pool, keyed by icon id
+local function ISSearchManager_applyServerPool(self, zoneId, icons)
+    if icons then
+        -- Iterate the (bounded) incoming pool, not the session-wide discard set which
+        -- grows with every discard. Clearing the current key mid-traversal is allowed in Lua 5.1.
+        -- Safe to mutate: icons is a per-call table decoded from the pool packet.
+        for iconID in pairs(icons) do
+            if QFID_discardedIconIds[iconID] then
+                icons[iconID] = nil
+            end
+        end
+    end
+
+    local original = instance:getOriginal("applyServerPool", ISSearchManager)
+    if original then
+        return original(self, zoneId, icons)
+    end
+end
+
 -- ===================================================================================================== --
 -- MODULE SETUP LOGIC
 -- ===================================================================================================== --
@@ -174,7 +218,10 @@ function QFID_QuickDiscard:setupModule()
     -- Create stub for onMouseButtonDown (vanilla doesn't define it, but we need it for overrideFunction to succeed)
     ISForageIcon.onMouseButtonDown = ISForageIcon.onMouseButtonDown or function() return false end
     self:overrideFunction(ISForageIcon, "onMouseButtonDown", ISForageIcon_onMouseButtonDown)
-    
+
+    -- Keep discards from reappearing under 42.20+ server-authoritative foraging (no-op on <42.20)
+    self:overrideFunction(ISSearchManager, "applyServerPool", ISSearchManager_applyServerPool)
+
     QFID_Utils.logInfo("Quick Discard module initialized successfully")
 end
 

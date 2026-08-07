@@ -1,5 +1,11 @@
 # Workshop Update History
 
+v1.4.1 - 2026-08-07
+
+Fixed:
+- Discarded forage icons reappearing after a couple of seconds in multiplayer on Build 42.20+.
+
+
 v1.4.0 - 2026-06-10
 
 Changed:

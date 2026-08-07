@@ -61,8 +61,11 @@ local function QFID_customDiscardIcon(icon, x, y, contextOption)
         icon.manager:removeItem(icon)
         -- removeIcon removes from UI and internal tracking
         icon.manager:removeIcon(icon)
-        -- Remember it so the 42.20 server pool can't re-materialise it (see applyServerPool override)
-        QFID_discardedIconIds[icon.iconID] = true
+        -- Remember it so the 42.20 server pool can't re-materialise it (see applyServerPool
+        -- override). Only MP clients run applyServerPool, so there is nothing to track in SP.
+        if isClient() then
+            QFID_discardedIconIds[icon.iconID] = true
+        end
     else
         QFID_Utils.logWarning("Icon has no manager reference: " .. tostring(icon.iconID))
     end

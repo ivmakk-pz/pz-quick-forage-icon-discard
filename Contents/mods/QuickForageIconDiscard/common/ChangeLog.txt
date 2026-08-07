@@ -46,3 +46,8 @@ Removed:
 Fixed:
 - Crash when foraging on Build 42.18+.
 [ ------ ]
+
+[ v1.4.1 - 2026-08-07 ]
+Fixed:
+- Discarded icons reappearing in multiplayer on Build 42.20+.
+[ ------ ]

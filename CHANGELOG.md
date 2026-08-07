@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.4.1] - 2026-08-07
+
+### Fixed
+- Discarded forage icons reappearing after about two seconds in multiplayer on Build 42.20+, where foraging became server-authoritative and the server pool re-materialised any icon the client removed.
+
 ## [1.4.0] - 2026-06-10
 
 ### Changed

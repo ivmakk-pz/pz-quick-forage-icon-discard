@@ -4,5 +4,5 @@ poster=poster.png
 icon=icon.png
 author=ivmakk
 description=Quick discard by single mouse click (RMB by default) instead of context menu.
-modversion=1.4.0
+modversion=1.4.1
 versionMin=42.15

@@ -27,8 +27,9 @@ description=[/list]
 description=
 description=[h2]Compatibility[/h2]
 description=[list]
-description=[*]Supported builds: 42.15+ (tested on 42.19.0 SP)
+description=[*]Supported builds: 42.15+ (tested on 42.20.2 SP & MP)
 description=[*]Safe to add/remove mid-game
+description=[*]Multiplayer: Supported
 description=[*]Recommended with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3507997225]Foraging Tooltip Extended [B42][/url]
 description=[/list]
 description=
@@ -41,5 +42,5 @@ description=
 description=[h2]Feedback[/h2]
 description=Found a bug or have suggestions? Leave a comment! I'd love to hear your thoughts and improve the mod further.
 description=[img]https://i.imgur.com/MKy1gMX.gif[/img]
-tags=Build 42;Interface;QoL
+tags=Build 42;Interface;Multiplayer;QoL
 visibility=public

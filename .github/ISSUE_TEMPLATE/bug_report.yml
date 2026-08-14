@@ -1,0 +1,79 @@
+name: Bug report
+description: Something in Quick Forage Icon Discard is broken or behaves wrong in-game.
+type: Bug
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The game build, the mode, and a log excerpt are what make a bug reproducible, so please fill those in. General questions are better as a [Steam Workshop comment](https://steamcommunity.com/sharedfiles/filedetails/?id=3593442524).
+  - type: input
+    id: game-build
+    attributes:
+      label: Game build
+      description: The Project Zomboid build you are on (title screen, bottom corner).
+      placeholder: "42.20.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: mod-version
+    attributes:
+      label: Mod version
+      description: Quick Forage Icon Discard version (Workshop change notes, or the value in mod.info). Pick "Other / not listed" if yours isn't here.
+      options:
+        - "1.4.1"
+        - "1.4.0"
+        - "Other / not listed"
+    validations:
+      required: true
+  - type: dropdown
+    id: game-mode
+    attributes:
+      label: Game mode
+      description: Where does it happen?
+      options:
+        - Singleplayer
+        - Hosted co-op (in-game host)
+        - Dedicated server
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: mod-isolation
+    attributes:
+      label: Does it still happen with other mods disabled?
+      description: No need to list every enabled mod. Instead, test with only Quick Forage Icon Discard enabled and note what happens. That's the quickest way to rule out a conflict with another mod.
+      options:
+        - "Yes - it still happens with only Quick Forage Icon Discard enabled"
+        - "No - it goes away when I disable my other mods"
+        - "I haven't tested with other mods disabled"
+    validations:
+      required: true
+  - type: input
+    id: suspected-conflict
+    attributes:
+      label: Suspected conflicting mod (optional)
+      description: If disabling other mods fixed it and you narrowed it down, name the mod (and its Workshop link if handy). Foraging-icon mods are the likeliest to clash.
+    validations:
+      required: false
+  - type: textarea
+    id: what-went-wrong
+    attributes:
+      label: What went wrong?
+      description: What you did (step by step), what happened, and what you expected instead. If a screenshot shows the problem, drag it in here.
+      placeholder: |
+        1. Start foraging so forage icons appear on the ground
+        2. Click an icon to discard it (RMB by default), or open its context menu
+        3. What happened: ...
+        4. What I expected: ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Either paste the relevant lines, or drag in the full log files. Logs live in `%USERPROFILE%\Zomboid\Logs\`: the newest `*_DebugLog.txt` (client) and, for multiplayer, `*_DebugLog-server.txt` (server). `%USERPROFILE%\Zomboid\console.txt` also holds `[QFID]`-prefixed messages.
+      placeholder: Paste the relevant lines, or drag the full log files here.
+    validations:
+      required: false

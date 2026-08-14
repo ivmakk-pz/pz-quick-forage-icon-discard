@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest an improvement or new capability for Quick Forage Icon Discard.
+type: Feature
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea. Keep it focused on this mod (one-click discarding of forage icons).
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: What should the mod do, and what makes it worth having? Describe it from a player's point of view.
+    validations:
+      required: true

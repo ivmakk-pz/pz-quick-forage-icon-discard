@@ -1,9 +1,10 @@
 # Quick Forage Icon Discard
 
-[![Mod Version](https://img.shields.io/badge/Version-1.4.1-blue)](https://github.com/ivmakk-pz/pz-quick-forage-icon-discard/releases)
-[![Steam Workshop](https://img.shields.io/badge/Steam-Workshop-1b2838?logo=steam)](https://steamcommunity.com/sharedfiles/filedetails/?id=3593442524)
+![Mod Version](https://img.shields.io/badge/Version-1.4.1-blue)
 
-A Project Zomboid mod for Build 42. Available on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3593442524).
+[Steam Workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=3593442524)
+
+A Project Zomboid mod for Build 42.
 
 ## Features
 
@@ -61,8 +62,6 @@ When you middle-click a forage icon, you can:
 
 ## License
 
-Licensed under the **GNU General Public License v3.0** - see [LICENSE](LICENSE).
+Licensed under the [GNU General Public License v3.0](LICENSE). Copyright (C) 2025 ivmakk.
 
-Copyright (C) 2025 ivmakk
-
-You are free to use, study, and modify this mod. If you redistribute it or reupload a modified version, it must stay under GPL-3.0, keep the original author credit, and make its full source available. Contributions back to this repository are welcome.
+You're free to use, study, and modify the code. If you distribute a modified version (including reuploading to the Steam Workshop), it must stay under GPL-3.0, keep this copyright and attribution, and make its full source available. Verbatim or barely-changed reuploads that strip credit violate the license - please don't. Contributions back to this repo are welcome.

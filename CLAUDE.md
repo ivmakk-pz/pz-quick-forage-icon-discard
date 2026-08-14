@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Project Zomboid client-side mod ("Quick Forage Icon Discard") written in Lua 5.1 for PZ's modding environment. It lets players discard forage icons with a single mouse click (RMB by default) instead of the context menu, restoring a discard feature that vanilla removed in Build 42.13. Current mod version: 1.4.0.
+A Project Zomboid client-side mod ("Quick Forage Icon Discard") written in Lua 5.1 for PZ's modding environment. It lets players discard forage icons with a single mouse click (RMB by default) instead of the context menu, restoring a discard feature that vanilla removed in Build 42.13.
 
 There is no build, compile, lint, or test step. The mod runs as Lua loaded by the game. All testing is manual in-game by the developer — do **not** create unit tests, test files, or testing guides.
 
@@ -30,7 +30,7 @@ Everything is built on a self-protecting module pattern in `Core/QFID_ModuleBase
 
 Feature modules (`Modules/`), each exporting `{ initialise, destroy, isActive, getInstance }` over a single instance:
 
-- `QFID_QuickDiscard.lua` — the core feature. Overrides `ISForageIcon` mouse handlers (`onRightMouseDown`, `onRightMouseUp`, `onMouseButtonDown`, `initialise`) to map configured mouse buttons to discard vs. context menu. Implements `QFID_customDiscardIcon` to remove a forage icon via `icon.manager:removeItem/removeIcon` and `triggerEvent("onUpdateIcon", ...)` for multiplayer sync (vanilla `onClickDiscard` no longer exists in 42.13+).
+- `QFID_QuickDiscard.lua` — the core feature. Overrides `ISForageIcon` mouse handlers (`onRightMouseDown`, `onRightMouseUp`, `onMouseButtonDown`, `initialise`) to map configured mouse buttons to discard vs. context menu. Implements `QFID_customDiscardIcon` to remove a forage icon via `icon.manager:removeItem/removeIcon` and `triggerEvent("onUpdateIcon", ...)` for multiplayer sync (vanilla `onClickDiscard` no longer exists in 42.13+). On Build 42.20+ foraging is server-authoritative: a session-local `QFID_discardedIconIds` set plus an override of `ISSearchManager:applyServerPool` strips discarded ids from the incoming server pool so they aren't re-materialised.
 - `QFID_Tooltip.lua` — overrides `ISForageIcon` to show a compact item-name tooltip on hover.
 
 Support files (`client/` root):
@@ -63,9 +63,10 @@ Keep-a-Changelog ready: start the subject with one category (`Added | Changed | 
 
 ## Releasing
 
-A version bump touches several files in lockstep: `modversion` in `mod.info`, `MOD_VERSION` in `QFID_Utils.lua`, the `README.md` badge, plus three changelog formats (`CHANGELOG.md`, `workshop_assets/workshop_updates.txt`, and `common/ChangeLog.txt` — note the last is oldest-first/append-at-bottom). Git tags use no `v` prefix (`1.4.0`). Use the **`pz-release`** skill for the full prepare-and-finalize sequence.
+A version bump touches several files in lockstep: `modversion` in `mod.info`, `MOD_VERSION` in `QFID_Utils.lua`, the `README.md` badge, plus three changelog formats (`CHANGELOG.md`, `workshop_assets/workshop_updates.txt`, and `common/ChangeLog.txt` — note the last is oldest-first/append-at-bottom). Git tags use a `v` prefix (`v1.4.1`); the `modversion`/`MOD_VERSION` fields stay unprefixed. Use the **`pz-release`** skill for the full prepare-and-finalize sequence.
 
 ## Reference material
 
 - `docs/pz_reference.md` — project lookup notes: `mod.info` format, the `PZAPI.ModOptions` API + option conventions, and Steam Workshop BBCode syntax.
+- `docs/tickets/` — internal working tickets (`project-docs` convention). Gitignored and local-only; kept out of the public repo.
 - Vanilla game source, decompiled Java, release notes, PZwiki references, and migration guides live in the shared context repo wired up by the **`pz-modding`** skill — read from there instead of keeping local copies. The discard gap this mod fills: `ISForageIcon.onClickDiscard` and `forageSystem.addOrDropItems(_discardItems)` existed in 42.12 but were removed in 42.13.

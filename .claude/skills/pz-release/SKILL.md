@@ -20,5 +20,5 @@ Follow the generic release procedure in the central `pz-modding` skill (`referen
   - `Contents/mods/QuickForageIconDiscard/42/media/lua/client/QFID_Utils.lua` → `QFID_Utils.MOD_VERSION = "X.Y.Z"`
   - `README.md` → version badge `![...Version-X.Y.Z-blue...]`
 - **Three changelogs:** `CHANGELOG.md` (newest-first), `workshop_assets/workshop_updates.txt` (plain text, `v` prefix, newest-first), `Contents/mods/QuickForageIconDiscard/common/ChangeLog.txt` (in-game alert, oldest-first, append at BOTTOM).
-- **Tag convention: no `v` prefix** (`1.4.0`), matching existing tags — even though the workshop/in-game changelogs use `v`.
+- **Tag convention: `v` prefix** (`v1.4.1`), matching the workshop/in-game changelogs and the `ivmakk-pz` org. The `modversion`/`MOD_VERSION`/README-badge fields stay unprefixed (`X.Y.Z`).
 - **mod id:** `Ivmakk_QuickForageIconDiscard`.

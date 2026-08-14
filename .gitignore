@@ -125,3 +125,7 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,lua,windows,macos
 
 Mods_Refs/*
+
+### Project ###
+# Internal working tickets - local-only, kept out of the public repo
+docs/tickets/

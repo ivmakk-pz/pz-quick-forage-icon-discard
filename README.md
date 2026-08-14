@@ -60,4 +60,8 @@ When you middle-click a forage icon, you can:
 
 ## License
 
-See [LICENSE](LICENSE) file.
+Licensed under the **GNU General Public License v3.0** - see [LICENSE](LICENSE).
+
+Copyright (C) 2025 ivmakk
+
+You are free to use, study, and modify this mod. If you redistribute it or reupload a modified version, it must stay under GPL-3.0, keep the original author credit, and make its full source available. Contributions back to this repository are welcome.

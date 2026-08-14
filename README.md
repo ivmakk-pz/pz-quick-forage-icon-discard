@@ -1,8 +1,9 @@
 # Quick Forage Icon Discard
 
-![Mod Version](https://img.shields.io/badge/Version-1.4.1-blue)
+[![Mod Version](https://img.shields.io/badge/Version-1.4.1-blue)](https://github.com/ivmakk-pz/pz-quick-forage-icon-discard/releases)
+[![Steam Workshop](https://img.shields.io/badge/Steam-Workshop-1b2838?logo=steam)](https://steamcommunity.com/sharedfiles/filedetails/?id=3593442524)
 
-A Project Zomboid mod for Build 42.
+A Project Zomboid mod for Build 42. Available on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3593442524).
 
 ## Features
 

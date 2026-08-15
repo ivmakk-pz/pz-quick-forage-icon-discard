@@ -17,7 +17,7 @@ This mod's `id` is `Ivmakk_QuickForageIconDiscard` (format `Author_ModName`). Fo
 
 ## PZAPI.ModOptions API quick reference
 
-Used by `media/lua/client/QFID_ModOptions.lua`. Register options on `Events.OnGameBoot`, wrapped in `pcall` so a failure falls back to hardcoded defaults. `PZAPI.ModOptions` is created at client-Lua boot (`PZAPI/ModOptions.lua` top-level), so it already exists by `OnGameBoot`, and `OnGameBoot` (Core.java:3963) fires once, immediately before the first `OnMainMenuEnter` (3964) that builds the options screen — so the options are in `PZAPI.ModOptions.Dict`/`Data` before any options screen calls `load()`.
+Used by `media/lua/client/QFID_ModOptions.lua`. Register options on `Events.OnGameBoot`, wrapped in `pcall` so a failure falls back to hardcoded defaults. `PZAPI.ModOptions` is created at client-Lua boot (`PZAPI/ModOptions.lua` top-level), so it already exists by `OnGameBoot`, and `OnGameBoot` (Core.java:3963) fires once, immediately before the first `OnMainMenuEnter` (3964) that builds the options screen, so the options are in `PZAPI.ModOptions.Dict`/`Data` before any options screen calls `load()`.
 
 Do **not** register on `OnCreateUI`: it never fires at the title screen, so the options are unregistered there. That hides them from the main-menu Mod Options screen, and a title-screen save of another options mod parks QFID's `ModOptions.ini` lines in `OtherOptions`, where a vanilla `save()` bug (writes those lines with no newline separator) concatenates and corrupts them, wiping the values on next load. See `docs/tickets/0004`.
 

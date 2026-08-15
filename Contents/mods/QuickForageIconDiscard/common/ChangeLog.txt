@@ -51,3 +51,8 @@ Fixed:
 Fixed:
 - Discarded icons reappearing in multiplayer on Build 42.20+.
 [ ------ ]
+
+[ v1.4.2 - 2026-08-15 ]
+Fixed:
+- Mod options no longer reset to default and now appear in the main-menu Mod Options screen.
+[ ------ ]

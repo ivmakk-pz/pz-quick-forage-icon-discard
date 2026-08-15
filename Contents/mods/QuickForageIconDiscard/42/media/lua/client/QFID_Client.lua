@@ -1,6 +1,6 @@
 -- Quick Forage Icon Discard Main Client File
 -- Author: ivmakk
--- Version: 1.4.0
+-- Version: 1.4.2
 
 local QFID_Utils = require "QFID_Utils"
 local QFID_ModOptions = require "QFID_ModOptions"
@@ -18,7 +18,13 @@ function QuickForageIconDiscard.init()
     QFID_Utils.logInfo("Client initialization complete")
 end
 
--- Initialize mod options when UI is ready with protection
+-- Register mod options at game boot, before any options screen (main-menu or
+-- in-game) builds and calls PZAPI.ModOptions:load(). OnCreateUI never fires at
+-- the title screen, so registering there leaves the options unregistered: they
+-- don't show on the main-menu screen, and a title-screen save of another mod's
+-- options parks QFID's saved lines in OtherOptions, where a vanilla save() bug
+-- concatenates them into one corrupt line and wipes the values. pcall keeps a
+-- failure falling back to hardcoded defaults.
 function QuickForageIconDiscard.initModOptions()
     local ok, err = pcall(function()
         QFID_ModOptions.initialize()
@@ -32,6 +38,6 @@ end
 
 -- Hook into game events
 Events.OnGameStart.Add(QuickForageIconDiscard.init)
-Events.OnCreateUI.Add(QuickForageIconDiscard.initModOptions)
+Events.OnGameBoot.Add(QuickForageIconDiscard.initModOptions)
 
 return QuickForageIconDiscard

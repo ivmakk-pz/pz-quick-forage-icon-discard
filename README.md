@@ -1,6 +1,6 @@
 # Quick Forage Icon Discard
 
-![Mod Version](https://img.shields.io/badge/Version-1.4.1-blue)
+![Mod Version](https://img.shields.io/badge/Version-1.4.2-blue)
 
 [Steam Workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=3593442524)
 

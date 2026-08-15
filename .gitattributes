@@ -1,2 +1,7 @@
 # Ensure mod.info files always use CRLF line endings
 **/mod.info text eol=crlf
+
+# workshop.txt is game-generated with irregular (mixed CRLF/CR) line endings.
+# Opt it out of EOL normalization so git records exact bytes and stops flagging
+# line-ending churn; still diffable as text.
+/workshop.txt -text

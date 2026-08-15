@@ -54,5 +54,5 @@ Fixed:
 
 [ v1.4.2 - 2026-08-15 ]
 Fixed:
-- Mod options no longer reset to default and now appear in the main-menu Mod Options screen.
+- Mod option settings no longer reset to default, and the options now appear in the main-menu Mod Options screen, not only in-game.
 [ ------ ]

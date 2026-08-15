@@ -3,7 +3,7 @@
 ## [1.4.2] - 2026-08-15
 
 ### Fixed
-- Mod option settings (discard and context-menu buttons) no longer reset to default, and the options now appear in the main-menu Mod Options screen, not only in-game.
+- Mod option settings no longer reset to default, and the options now appear in the main-menu Mod Options screen, not only in-game.
 
 ## [1.4.1] - 2026-08-07
 
